@@ -1,0 +1,3719 @@
+Docker - Docker is called as containerization and technology
+
+There are two types of softwares
+1. Application software
+2. System softwares
+
+
+Application software - 
+It is used by people is called as application software.  (apps) 
+But apps con't directly talk to hardware application softwares(apps) it dependent on system softwares.
+Example - Third parties app's are called as application softwares.
+
+
+	Application software wil depends on certain system softwares, only perticular system software is there that application works.
+		
+	we use application software-----> It will talk to system software-------> the system software will talk to hardware 	
+
+System software - It is escentially the system software taking care of the hardware allocation. (Computer)
+					
+				===> softwares which can directly interact with the hardware we called them as system software.
+				===> system software is the one responsible for communicating with the hardware.
+					
+		Example - For installing third party app's we need system software.
+		
+		
+
+
+Virtualization - 
+
+
+					hardware  (computer)
+					   |
+					host OS   (main os)(It could be windows,linux,IOS any OS)
+					   |
+					hypervisor   (virtualization)
+					   |
+				Guest OS1  |  Guest OS2    (Here install in OS in form of guest OS)instance
+				SQL server |  oracle        (Here in guest os1 installing the database of SQL server
+											 In guest os2 installing the database of oracle)
+				
+		
+				
+Hardware -- Hardware is a computer
+
+Host OS  -- It is main OS, It could be any OS(windows,linux,redhat,IOS). It is called as Host OS.
+
+hypervisor -- Here we install virtualization software which is called as hypervisor.(Oracle virtual box, VMWare workstation) all called as hypervisors.
+              ====>   This virtualization technology is enabling to run multiple operating systems on one piece of software.
+				
+Guest OS1,OS2 -- Here we install in OS in the form of guest OS1(windows) and guest OS2(redhat)
+
+In Guest os1 -- Here we installing the database of sql server
+
+In Guest os2 -- Here we installing the database of oracle 
+
+Next we migrating the data from database to another database.
+
+
+Architecture of Docker:---
+============================
+
+This is Containerization
+                          
+						  SQL server  |  Oracle     ----> this applications called as containers
+						            |
+								    |
+							  Docker Engine       --------> It is also application software
+							        |
+									|
+								 Host OS
+								    |
+									|
+								  Hardware
+								  
+							
+hardware -- Hardware (Server)							
+
+Host os  -- Here we install any type of OS.
+
+Docker engine -- In docker engine we can run any application in the form of "Container"
+				===>By using Docker engine no need to install windows OS in SQL server database & no need to install Redhat OS in oracle database
+                ===> This databases are running directly on top of the docker engine (This database applications called as containers).
+		
+SQL server
+
+Oracle  --  when oracle database is running, oracle requires some amount of hardware then
+                 Oracle communicate with DE and DE communicate with Host OS and Host OS communicate with Hardware.
+				 
+		    oracle ---- Docker engine ---- Host OS ---- Hardware
+			
+			
+Docker Engine comes in two flavours
+    
+    1. Community edition is free for use.
+	2. Enterprice edition has to paid for using.   ---> we get support
+		
+ Both community and enterprice edition features are same 
+ In Organizations moslty uses enterprice edition only, becoz we get support from docker community,if we face any issue with enterprise edition.
+
+ 				
+Containers: -- Containers are those applications which are running without the dependency  on 'OS'
+  
+  ==> By using docker engine which ever application without the dependency of the OS, we will run it in the form of "Containers". This technology is called it as process issalation 
+  ==> Containers are divide of the OS, they are not dependent on the OS. they directly run from the docker engine.
+  
+  
+Software development life cycle:---
+
+Build
+  |                        
+  |----->ship
+           |
+		   |------>run
+		   
+		   
+	This Build,ship,Run represents the complete software development life cycle.
+	
+	Build environment is called as developing the code(build)
+	ship environment is called as package,testing
+	production environment is called run
+	
+=============================================================================================
+
+How to install docker in windows machine?
+ 
+	goto google.come
+	search for docker desktop
+	click on docker desktop, it is afficial site of docker
+	select the download for windows and download.
+How we execute the docker commands in windows machine?
+	
+
+	Goto search in laptop 
+	search for windows powershell   (In windows powershell we use docker commands)
+	
+===============================================================================================
+                            
+What is Docker images/Docker Containers?
+
+Docker image: -- Docker image is the combination of binaries/librarys(bin/libs) which are necessary for software application.
+				 Onces the image is installed and comes into running condition we called it as a container.
+				 
+				The original setup file which we have downloaded in docker terminalogy we called it as "image".
+				Onces it is installed and running application we called it as a "Container". 
+				
+			==> From one image we can create "n" no of Containers.
+			
+
+when we install docker in background automatically Docker client application will be installed.
+
+what does the docker client will does is?
+
+ when we give docker commands it is responsibility for docker client to take that command and it will pass that command to another background process is called as "Docker Deamon".
+ 
+ Docker Deamon will analysis that commands and depending on that kind of command it will send that command to work on Image either some commands only work on Containers (or) 
+  some of the commands are made to work on "docker registery"
+  
+  
+Docker registery: ---
+
+	===> Docker registery is location where all docker images are saved.  
+	===> This all are background applications.
+	===> Once the image is installed it becomes a container.
+	
+								  
+	 2. private registery   ---- It is restricted only my organization can access.
+								 If one organization creating some images and those images only can access that company team members. 
+	
+
+Docker Host: ---  computer machine where docker is installed and running all this docker commands that perticullar server it could be windows,linux,mac anything that computer machine is called as docker host.
+
+
+	                              public registery is maintained by docker corporation.
+								  images which are available in public registery everyone can access through all over the 
+How we install docker in linux server in instance of aws cloud?	   
+4. To delete a docker image
+	   docker rmi image_name/image_id
+	   
+
+Connect to the instance
+goto browser and search for get.docker.com
+
+	1. download the script
+
+       curl -fsSL https://get.docker.com -o install-docker.sh
+ 
+    2. run the script either as root, or using sudo to perform the installation.
+
+In docker registery it is classified into two types
+     1. public registery    ---- universally everyone can access it  world.
+      
+	   
+
+Importent Docker commands
+=========================
+
+working on docker images: ---
+===================================
+1. To download a docker images from dockerhub
+       docker pull image_name
+	   
+2. To search for docker images
+       docker search image_name
+
+3. To see the list of all the download docker images
+	   docker images  (or) docker image ls
+	   
+    To download a docker image of specific version
+	   docker pull image_name:version number
+5. To delete all the docker images
+	   docker system prune -af
+	   
+6. To get detailed info about a docker image
+	   docker image inspect image_name/image_id
+	   
+7. To creat an image from a customersied container
+	   docker commit image_name container_name/container_id
+	   
+8. To create a image from a dockerfile
+	   docker build -t image_name
+	   
+9. To save an image as a tar file
+	   docker image save image_name
+	   
+10. To convert the tarfile back as an image
+	   docker load tarfile_name image_name
+	   
+	  
+=======================================================================================
+Working on docker containers: ----
+====================================
+
+11. To see the list of all the running  containers
+	    docker container ls
+		
+12. To see the list of all the containers (running and stopped)
+		docker ps -a
+		
+13. To stop a running container
+		docker stop container_name/container_id
+		
+14. To delete a stopped container
+		docker rm container_name/container_id
+		
+15. To stop and also delete a container
+		docker rm -f container_name/container_id
+		
+16. To stop all the running containers
+		docker stop $(docker ps -aq)
+		
+17. To delete all the stopped contaienrs
+		docker rm $(docker ps -aq)
+		
+18. To stop and delete all the containers
+		docker rm -f $(docker ps -aq)
+		-
+19 To see the logs generated by a container
+		docker logs container_name/container_id
+		
+20. To see the ports opened by a container
+		docker port container_name/container_id
+		
+21. To get detailed info about a container
+		docker inspect container_name/container_id
+		
+22. To run some other application in a container from outside
+		docker exec	-it container_name/container_id application_to_run
+		Example: -- To open a shell in a container
+		docker exec -it container_name/container_id bash
+		
+23. To come out of a container without exiting
+		ctrl+p,ctrl+q
+
+24. To go inside a container which in running in background
+		docker attach container_name/container_id
+		
+25. To create a container
+		docker run image_name
+
+	run command options: --
+	==========================
+	-d : This is used to run the container in detached mode(background) unnecessary logs wil not come on screen.
+	--name : Used to give name for the container
+	-e : Used to pass environment variables to the container
+	-v : Used to mount an external device or folder as a volume for data backup
+	--volume-from : Used to create shareble docker volumes
+	--link : Used to create a link b/w multiple containers to setup a microservices architecture
+	-p : Used to perform port mapping, Here the container port will be mapped with the host port
+		   Example:  -p 8080:80 Here 80 is container port (internalport) and  8080 is hostport(external port)
+	-P : Used for automatic port  mapping that is it will automatically map the container port with a host port no that is greater than 30000
+         In instance connect to linux server and install docker in that instance
+    -it : Used to lauch an interactive terminal in a container(command prompt)
+	
+
+26. To see the ports used by a container
+		docker port container_id/container_name
+		
+27. To run any process in a container from outside the container
+		docker exec -it container_id/container_name process_name
+		Eg:-- To run the bash process in a container
+		docker exec -it container_id/container_name bash
+		
+28. To come out of a container without exit
+		ctrl+p,ctrl+q
+	
+29. To go back into a container from where the interactive terminal is running
+		docker attach container_id/container_name
+		
+30. To see the processes running in a container
+		docker container container_id/container_name top
+		
+Working on docker networks
+=============================
+
+31. To see the list of docker networks
+		docker network ls
+		
+32. To create a docker network
+		docker network create --driver network_type network_name
+
+33. To get detailed info about a network
+		docker network inspect network_name/network_id
+		
+34. To delete a docker network
+		docker network rm network_name/network_id
+		
+35. To connect a running container to a network
+		docker network connect network_name/network_id container_name/container_id
+		
+36. To disconnect a running container to a network
+		docker network disconnect network_name/network_id container_name/container_id
+
+Working on docker volumes
+============================
+
+37. To see the list of docker volumes
+		docker volume ls
+		
+38. To create a docker volume
+		docker volume create volume_name
+		
+39. To get detailed info about a volume
+		docker volume inspect volume_name/volume_id
+		
+40. To delete a volume
+		docker volume rm volume_name/volume_id
+		
+
+convert into root user --- sudo su - root  (It will change to rootuser)
+
+
+							-p 8000:80   (8000 is Hostport, 80 is container port)
+
+	
+		===>docker run --name webserver -d -p 8000:80 nginx
+		    Here giving name as webserver, -d for running in background -p for port mapping, 8000 is hostport we can give any number and 80 is container port it is not changible 
+			
+	    ===>docker run --name appserver -d -P tomee 
+		    Here -P "capital" P it will do automatically map the container no need to give port number it will pick the port number above 30000 range
+			
+	    ===>docker run --name myjenkins -d -p 9090:8080 jenkins/jenkins/
+		    Here downlading jenkins and name as myjenkins and -d for background running and -p for port mapping 9090 is hostport(external port) and 8080 is container port(internal port) and jenkins/jenkins is image.
+			
+    Creating ubuntu operating system in docker host.
+	
+	         docker run --name u1 -it ubuntu
+			 Here created the ubuntu operating system with name of u1 by using -it command.
+			 By giving exit it will come out from ubuntu OS and goto docker host.
+			
+			 mysql community server download (In google chrome)
+        ===>docker run --name mydb -d mysql
+			
+		===>docker ps -a 
+			This command gives all running and stopped container
+
+			Site: (mysql root login command)- In chrome search for this.
+	    ===>docker run --name mydb -d -e MYSQL_ROOT_PASSWORD=Nandu@12345 mysql
+		    Here -e means environment variable it is mandatory field for mysql when you creating it.
+			
+		    docker exec -it mydb bash  (Here going inside of that container of mydb and opening bash shell
+		    bash-4.4# mysql -u root -p  (Here logging by rootuser (-u for username, -p for password)
+			enter password: Nandu@12345
+		
+		
+			
+==============================================================================================
+
+Multi container architecture or Micro services architecture:
+============================================================
+
+Instead of creating one container want to create a combination of multiple containers establish on network b/w all of them
+so one container start talking to other containers is called multi container architecture.
+
+=====> We have multiple docker containers which are communicating with each other.
+
+1. --link option
+2. docker compose
+3. docker networks
+		
+		This three are directly related to docker.
+		8712252820 manasa
+
+4. Ansible playbooks   
+5. python scripts
+                           outdated
+                               |
+--link option: --- It is (depricated) it is docker run command option.
+
+	===>docker run --name c1 -it busybox    =====>busybox is flavour of linux 
+	    If we give exit it will stop the container and comes out.
+        To come out of a container without stopping the running, give ctrl+p,ctrl+q
+		
+	===>docker run --name c2 -it --link c1:mybusybox busybox     (alies : mybusybox is another name of c1) 
+		Here we are establishing the connection b/w c1 and c2 containers.
+		
+		For checking if c1 and c2 are connected or not?
+		command : ping c1 ===> If you connected through c2  for exit ctrl+c
+				  ping c2 ===> If you connected through c1  same here  also for exit.
+				  
+		For exiting completely out of the busybox
+		command : exit
+				
+
+Example:-
+
+Wordpress :- 
+===========
+
+	It is used for creating websites.
+	When wordpress is designed in background the wordpress website stores the data, In database of mysql. 
+
+            
+Creating mysql database ?
+
+How we create mysql as a container?
+===>docker run --name mydb -d -e MYSQL_ROOT_PASSWORD=Nandu@12345 mysql:5 ===> Here :5 is selecting the version.
+
+Creating wordpress container?
+Goto dockerhub ===>search for wordpress===> take command
+===>docker run --name mywordpress -d -p 8888:80 --link mydb wordpress
+
+Detail information about the container?
+===>docker inspect mywordpress  (This will give detail info in jason format).
+
+
+setuping in docker server 
+In docker server settingup all the three CI-CD jenkins,qaserver,prodserver and linking qaserver,prodserver to jenkins 	in one docker server
+
+
+Here jenkins as myjenkins
+      tomee as qaserver
+	  tomee as prodserver
+
+docker run --name myjenkins -d -p 5555:8080 jenkins/jenkins     publicIP:5555
+docker run --name qaserver -d -p 3333:8080 --link myjenkins:jenkins tomee    publicIp:3333   
+docker run --name prodserver -d -p 4444:8080 --link myjenkins:jenkins tomee  publicIp:4444
+
+
+
+root@ip-172-31-32-78:~# docker container ls
+CONTAINER ID   IMAGE             COMMAND                  CREATED              STATUS              PORTS                                                  NAMES
+16e717b2c466   tomee             "/__cacert_entrypoin…"   13 seconds ago       Up 10 seconds       0.0.0.0:4444->8080/tcp, :::4444->8080/tcp              prodserver
+f18ed6a727b8   tomee             "/__cacert_entrypoin…"   About a minute ago   Up About a minute   0.0.0.0:3333->8080/tcp, :::3333->8080/tcp              qaserver
+77076eaba003   jenkins/jenkins   "/usr/bin/tini -- /u…"   24 minutes ago       Up 24 minutes       50000/tcp, 0.0.0.0:5555->8080/tcp, :::5555->8080/tcp   myjenkins
+
+
+LAMP architecture :--
+=========================
+L --- linux     (Underline operating system which is running on linux)
+A --- Apache    (Webservers are running from apache) webservers are running on Apache
+M --- Mysql     (For Database using mysql) In the background the databases are running on Mysql
+p --- PHP       (Scripting language which is used is PHP)developers are creating code by using PHP
+
+
+Docker Compose: --       (This is better way of setting-up the multi-container architecture).
+==================
+
+Docker compose uses the yaml files, with the help of yaml files it will create the multi-container architecture.
+yaml is not a programming language or scripting language,yaml is called as file format. It is the way of storing data
+
+creation of docker compose file is one time activity.
+For reasuble activity
+
+how to create a new file of docker compose file?
+docker filename should be docker-compose.yml only.
+vim docker-compose.yml
+
+How we run different name files in docker?
+docker compose -f filename.yml up -d
+docker compose -f filename.yml down (for deleting it)
+
+To edit the file we should go into insert mode?
+give insert
+
+To save and quit?
+Esc:wq enter
+
+TO quit without saving
+Esc:q enter
+
+---
+version: '3.8'
+
+services:
+  mydb:  (it is the container name becomes service name here [mydb]).
+    image: mysql:5
+	environment:
+	  MYSQL_ROOT_PASSWORD: Nandu@12345
+  
+  mywordpress:
+    image: wordpress
+	ports:
+	  - 8888:80
+	links:
+	  - mydb:mysql
+	  
+...
+
+save and quit
+
+How we setup the architecture?
+docker compose up -d (enter)
+===> Containers are created for checking purpose give docker container ls
+
+stopping multiple containers at a time?
+docker compose stop (It will stop all the containers).
+
+starting multiple containers at a time?
+docker compose start (It will start all the container running).
+
+How we stop the container and remove the containers with one command?
+docker compose down  (shutdown and delete the containers).
+
+==============================================
+
+Docker volumes:
+================
+Volumes is a back-up machanism even the containers are deleted.
+
+  There are three types of volumes
+  1. Simple docker volumes
+        simple docker volumes is way of preserving the data even after deleting the container.
+	
+	
+	/var/lib/docker/volumes/b05eb4cc7c9768a4bfae1e48e58532e87518530d35d85d271bf37cb958e543d9/_data
+	
+	Example: --
+	==============
+	create a directory
+	mkdir /data
+	create one ubuntu container?
+	docker run --name u1 -it -v /data ubuntu   (-v for mount as a volume)
+    docker inspect /data
+	
+  2. Sharable docker volumes
+        Used to share volumes between multiple containers.
+		--volumes-from
+		
+	 Example: ---
+	 =============
+	 docker run --name c1 -it -v /data centos
+	 In c1 container create comes touch files. 
+	 touch file1 file2
+	 give ctrl+p,ctrl+q
+	 
+	 Now creating another centos container?
+	 docker run --name c2 -it --volumes-from c1 centos
+	 add some other touch files for practising
+	 file3 file4
+	 give ctrl+p,ctrl+quit
+
+     Now we can see whatever data in c1 container all data wil be visible in c2 container.
+	 
+	 Now creating another centos container with c3 name?
+	 docker run --name c3 -t --volumes-from c2 centos
+	 
+	 ===>docker attach c1 ===> this command wil take you to c1 container.
+	 
+	 Give exit ===>to come out from all the containers.
+	 If you remove all the containers in host machine. In volumes the data will be stored.
+	 
+  3. Docker volume containers
+           Docker volume containers are bi-directional
+	  Example: --
+	  
+	  create a volume (docker volume create myvolume)
+	  create a file with cat > file1 and add some data in that file
+	  docker run --name u1 -it -v myvolume:/tmp ubuntu
+	 ====> Here inside the u1 container in the tmp folder the myvolume folder is saved.
+	 
+	 
+Practiced commands:
+--------------------
+
+
+root@ip-172-31-30-205:~# docker volume create myvolume
+myvolume
+root@ip-172-31-30-205:~# docker volume inspect myvolume
+[
+    {
+        "CreatedAt": "2024-06-30T06:57:00Z",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/myvolume/_data",
+        "Name": "myvolume",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+root@ip-172-31-30-205:~# cd /var/lib/docker/volumes/myvolume/_data
+root@ip-172-31-30-205:/var/lib/docker/volumes/myvolume/_data# ls
+root@ip-172-31-30-205:/var/lib/docker/volumes/myvolume/_data# cat file1
+one
+two
+three
+four
+root@ip-172-31-30-205:/var/lib/docker/volumes/myvolume/_data# cd
+root@ip-172-31-30-205:~# docker run --name u1 -it -v myvolume:tmp ubuntu
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+9c704ecd0c69: Pull complete 
+Digest: sha256:2e863c44b718727c860746568e1d54afd13b2fa71b160f5cd9058fc436217b30
+Status: Downloaded newer image for ubuntu:latest
+docker: Error response from daemon: invalid volume specification: 'myvolume:tmp': invalid mount config for type "volume": invalid mount path: 'tmp' mount path must be absolute.
+See 'docker run --help'.
+root@ip-172-31-30-205:~# docker images
+REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+ubuntu       latest    35a88802559d   3 weeks ago   78.1MB
+root@ip-172-31-30-205:~# docker rmi ubuntu
+Untagged: ubuntu:latest
+Untagged: ubuntu@sha256:2e863c44b718727c860746568e1d54afd13b2fa71b160f5cd9058fc436217b30
+Deleted: sha256:35a88802559dd2077e584394471ddaa1a2c5bfd16893b829ea57619301eb3908
+Deleted: sha256:a30a5965a4f7d9d5ff76a46eb8939f58e95be844de1ac4a4b452d5d31158fdea
+root@ip-172-31-30-205:~# 
+root@ip-172-31-30-205:~# docker run --name u1 -it -v myvolume:/tmp ubuntu
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+9c704ecd0c69: Pull complete 
+Digest: sha256:2e863c44b718727c860746568e1d54afd13b2fa71b160f5cd9058fc436217b30
+Status: Downloaded newer image for ubuntu:latest
+root@fa0c59d4a184:/# ls
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@fa0c59d4a184:/# cd /tmp
+root@fa0c59d4a184:/tmp# ls
+file1
+root@fa0c59d4a184:/tmp# cat file1
+one
+two
+three
+four
+root@fa0c59d4a184:/tmp#  cat >> file1
+five
+six
+seven
+root@fa0c59d4a184:/tmp# cat file1
+one
+two
+three
+four
+five
+six
+seven
+root@fa0c59d4a184:/tmp# exit
+exit
+root@ip-172-31-30-205:~# docker rm -f u1
+u1
+root@ip-172-31-30-205:~# docker volume ls
+DRIVER    VOLUME NAME
+local     myvolume
+root@ip-172-31-30-205:~# docker volume inspect myvolume
+[
+    {
+        "CreatedAt": "2024-06-30T06:57:00Z",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/myvolume/_data",
+        "Name": "myvolume",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+root@ip-172-31-30-205:~# cd /var/lib/docker/volumes/myvolume/_data
+root@ip-172-31-30-205:/var/lib/docker/volumes/myvolume/_data# ls
+file1
+root@ip-172-31-30-205:/var/lib/docker/volumes/myvolume/_data# cat file1
+one
+two
+three
+four
+six
+seven 
+five
+	 
+	 
+
+root@ip-172-31-32-78:/var/lib/docker/volumes/myvolume/_data# cd
+root@ip-172-31-32-78:~# 
+
+root@ip-172-31-32-78:~# docker volume create newvolume
+newvolume
+root@ip-172-31-32-78:~# docker volume inspect newvolume
+[
+    {
+        "CreatedAt": "2024-02-02T11:15:58Z",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/newvolume/_data",
+        "Name": "newvolume",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+root@ip-172-31-32-78:~# cd /var/lib/docker/volumes/newvolume/_data
+root@ip-172-31-32-78:/var/lib/docker/volumes/newvolume/_data# cat > tomcat-users.xml
+<tomcat-users>
+   <user username="Nandu" password="Nandu@123" roles="manager-script"/>
+</tomcat-users>
+
+root@ip-172-31-32-78:/var/lib/docker/volumes/newvolume/_data# ls
+tomcat-users.xml
+root@ip-172-31-32-78:/var/lib/docker/volumes/newvolume/_data# cat tomcat-users.xml
+<tomcat-users>
+   <user username="Nandu" password="Nandu@123" roles="manager-script"/>
+   
+root@ip-172-31-32-78:/var/lib/docker/volumes/newvolume/_data# cd
+root@ip-172-31-32-78:~# 
+root@ip-172-31-32-78:~# docker run --name t1 -d -P -v newvolume:/tmp tomee
+1f1c47e4a5254c54f5bced03e21500b2c2bee21f882097213524498cf36a6e5c
+root@ip-172-31-32-78:~# docker exec -it t1 bash
+root@1f1c47e4a525:/usr/local/tomee# cd /tmp
+root@1f1c47e4a525:/tmp# ls
+hsperfdata_root  tomcat-users.xml
+root@1f1c47e4a525:/tmp#
+root@1f1c47e4a525:/tmp# cat tomcat-users.xml
+<tomcat-users>
+   <user username="Nandu" password="Nandu@123" roles="manager-script"/>
+root@1f1c47e4a525:/tmp# 
+
+ 
+Note :--   One volume can mount to n number of containers.
+
+For deleting the containers the command is docker rm -f filename
+	 
+	 
+Docker compose - Docker compose is used for multi-container architecture
+
+
+====================================================================================================
+
+
+There are two ways for creating customized images
+1. docker commit
+2. Dockerfile
+
+
+Docker commit -  It is directly creating images
+                 When you use bellow command no need to install softwares that carring inside the container(myubuntu)
+				 
+			Example:--		docker commit u1 myubuntu
+					        docker commit (u1)container_name (myubuntu)image_name
+					
+					
+
+The bellow one way of creating customized images.
+			  
+root@ip-172-31-32-78:~# docker run --name u1 -it ubuntu
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+57c139bbda7e: Pull complete 
+Digest: sha256:e9569c25505f33ff72e88b2990887c9dcf230f23259da296eb814fc2b41af999
+Status: Downloaded newer image for ubuntu:latest
+root@6f151ad46da4:/# apt-get update
+root@6f151ad46da4:/# apt-get install git maven
+root@6f151ad46da4:/# apt-get install tree
+root@6f151ad46da4:/#exit
+
+
+root@ip-172-31-32-78:~# docker commit u1 myubuntu   -----------> here creating custamized image by using u1 container
+sha256:04f3c62e985e61c007458a27f8452e676fb9c4aa0fceb57c729a06a3e8fe3f4e
+
+                      docker commit u1 myubuntu   (u1 is container) and (myubuntu is image)
+
+		In u1 we installed git,maven and tree software apps (new image name as "myubuntu" image is created) 
+
+====>(In "myubuntu" image the softwares of git,tree are saved when we create a container by using this image(myubuntu)
+        automatically shows this softwares as installed in that container). 
+
+root@ip-172-31-32-78:~# docker ps -a
+CONTAINER ID   IMAGE     COMMAND       CREATED         STATUS                        PORTS     NAMES
+6f151ad46da4   ubuntu    "/bin/bash"   2 minutes ago   Exited (127) 49 seconds ago             u1
+root@ip-172-31-32-78:~# exit
+root@ip-172-31-32-78:~# docker images
+REPOSITORY   TAG       IMAGE ID       CREATED              SIZE
+myubuntu     latest    04f3c62e985e   About a minute ago   462MB
+ubuntu       latest    fd1d8f58e8ae   7 days ago           77.9MB
+
+CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS                       PORTS     NAMES
+aecbf25b9b78   ubuntu    "/bin/bash"   46 seconds ago   Exited (0) 30 seconds ago              u2
+6f151ad46da4   ubuntu    "/bin/bash"   4 minutes ago    Exited (127) 2 minutes ago             u1
+			 
+root@ip-172-31-32-78:~# docker rm -f u1
+u1
+root@ip-172-31-32-78:~# docker images
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+myubuntu     latest    04f3c62e985e   3 minutes ago   462MB
+ubuntu       latest    fd1d8f58e8ae   7 days ago      77.9MB
+root@ip-172-31-32-78:~# 
+root@ip-172-31-32-78:~# docker rmi ubuntu
+Untagged: ubuntu:latest
+Untagged: ubuntu@sha256:e9569c25505f33ff72e88b2990887c9dcf230f23259da296eb814fc2b41af999
+root@ip-172-31-32-78:~# 
+root@ip-172-31-32-78:~# docker images
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+myubuntu     latest    04f3c62e985e   4 minutes ago   462MB
+root@ip-172-31-32-78:~# 
+root@ip-172-31-32-78:~# docker run --name u1 -it myubuntu
+root@decd29573463:/# git --version
+git version 2.34.1
+root@decd29573463:/# mvn --version
+Apache Maven 3.6.3
+Maven home: /usr/share/maven
+Java version: 11.0.21, vendor: Ubuntu, runtime: /usr/lib/jvm/java-11-openjdk-amd64
+Default locale: en_US, platform encoding: ANSI_X3.4-1968
+OS name: "linux", version: "6.2.0-1018-aws", arch: "amd64", family: "unix"
+root@decd29573463:/# 
+root@decd29573463:/# tree --version
+tree v2.0.2 (c) 1996 - 2022 by Steve Baker, Thomas Moore, Francesc Rocher, Florian Sesser, Kyosuke Tokoro 
+root@decd29573463:/# exit
+exit
+root@ip-172-31-32-78:~# 
+			  
+
+=========================================================================================================================	
+
+	
+	Dockerfile:---                     dockerfile start from 9th session
+	==================
+	
+		Dockerfile is not for creating containers, it is for creating images.
+			  
+	    Dockerfile is another way for creating the customized images (This is better way)
+		
+		Docker file is a textfile, where we give certain instructions, with those instructions we create custamized
+        docker images.
+		
+		By using dockerfile we creating docker images and by using docker images we creating docker containers.
+		
+		By using docker image we create the docker containers.
+		
+		But docker image is created by using dockerfile.
+					
+					Dockerfile ------------Docker image ----------------Docker Container
+			  
+			  
+
+EXAMPLE:---
+============
+
+                
+		filename has to be like dockerfile only
+		
+		vim dockerfile  ====>This is the filename
+		
+		FROM ubuntu
+		MAINTAINER Nandu
+		RUN apt-get update
+		RUN apt-get install -y git
+		RUN apt-get install -y tree
+		
+		Save and execute
+	===>For execution command is docker build -t myubuntu .  ('myubuntu' represents name of that dockerfile & '.' represent as current directory)
+			                     docker build -f filename -t image_name .
+		
+		If we add few new softwares in dockerfile, the previous softwares will won't run again it will directly move to 
+			newlly added softwares. 
+		To run all the softwares again in dockerfile we use cache busting 
+		
+	Cache busting :-- 
+	===================
+				cache busting will not take instructions from the cache, want to execute all the instructions mentioned in dockerfile program.
+			===> Already installed tools like git,maven etc.. in server it won't install it shows in cache, it won't install latest versions of git,maven based on it we using cache busting.
+			
+	How to do cache busting?
+	
+	command --- docker build --no-cache -t myubuntu .   (This command will execute everything freshelly).   (myubuntu is represent the filename of dockerfile).
+	   
+	   
+===============================================================================================================================
+	
+	Generally used keywords in dockerfile  
+	========================================
+	1. FROM  ---- from means where you creating docker images,containers of server(ubuntu,redhat) aws server(Instance)
+	2. MAINTAINER  ---- who is creating, who is modifing the docker file.
+	3. RUN ---  Run is used for linux commands at the time of creating the image like apt-get update,install the software apps.
+	4. COPY ---- It can copy files which are present on the docker host machine, If we want to copy into the customized image by using copy command.
+	8. USER ----  when am in container if i give "whoami" works in containers 
+	9. WORKDIR ---- we can create directories in specified location and also we can update dockerfile to where create the file and execute run commands and all.
+	10. ENV  ----   Environment variables
+	5. ADD ---- It can add files which are present in docker host machine & we can copy into customized image from remote server(other location) by using add command.
+	
+		Both copy and add have the capability to copy files which are present in the host machine in to the custamized image.
+		Add can also download files from remote servers(other locations).
+			
+			
+	6. EXPOSE ---- by using this "expose" we can change container port.(range 32767 for container ports)
+	7. VOLUME ---- There are certian images which automatically creates the "volume mount".
+	11. ARGS ----
+	12. SHELL ---- 
+	13. LABEL ---- label inside we can give maintainer(LABEL maintainer= cjnandu249@gmail.com
+	
+	14. CMD ----  Whenever the container is created its trigering one command which is known as the default process of the container.
+	                                   The container will be in running condition as long as the default process run's
+	15. ENTRYPOINT ----   Default process is specified using CMD and ENTRYPOINT
+	
+	Every container is triggering one default process and that default process is controlled using CMD&ENTRYPOINT.
+	
+All this keywords should be in uppercase.
+
+
+
+
+======================================================================================================================================================
+
+VOLUME:---
+============
+
+Creating volume with dockerfile?
+
+FROM centos
+MAINTAINER Nandu
+
+VOLUME /data (or) /tmp   ====> here am giving data folder to create volume in data folder.
+
+save it and exit
+
+Now create the container
+docker run --name c1 -it mycentos
+In c1 container create some touch files and exit from c1 container.
+
+docker inspect c1
+copy the mount source path
+
+Now delete the c1 container ----- docker rm -f c1
+Next give cd and paste the mount source path here and ls and docker volume ls
+
+Example :-- source path :--- /var/lib/docker/volumes/509be3193c0f3e9a39cc16327fa4fa0201c50d4e0855780ee7002901b9f1a123/_data
+
+For deleting volumes :--- docker system prune -f
+for deleting         : -- docker system prune -af
+
+=========================================================================================================================================
+
+USER :---
+=============
+
+dockerfile perticular is "USER"
+
+		Here creating a user of jenkins
+		When installing any tools like git maven we can't install directly becoz it won't have premissions.
+		we have to install by root user only
+		by using root user we can install tools by using apt-get update.
+		
+		
+root@ip-172-31-36-91:~# docker run --name j1 -d -P jenkins/jenkins
+Unable to find image 'jenkins/jenkins:latest' locally
+latest: Pulling from jenkins/jenkins
+0a9573503463: Pull complete 
+79f246b5779a: Pull complete 
+c014ee593a3d: Pull complete 
+4ad8d150fa8c: Pull complete 
+47db57091084: Pull complete 
+ab3bdbf6ab85: Pull complete 
+f98d2fee5369: Pull complete 
+be637fdb70e6: Pull complete 
+580fefabf8e9: Pull complete 
+f7d620ec0af9: Pull complete 
+edf548f4bd15: Pull complete 
+45fdc20e9848: Pull complete 
+Digest: sha256:f1c902d43b90e6f575d453405658cea8dd708dbf7e155274d41feeed8641d6bb
+Status: Downloaded newer image for jenkins/jenkins:latest
+d05d1b76a021af9e95486a464b7a6c0aad84be12abb14ed53e0242aad699d313
+
+root@ip-172-31-36-91:~# 
+root@ip-172-31-36-91:~# docker container ls
+CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS          PORTS                                                                                        NAMES
+d05d1b76a021   jenkins/jenkins   "/usr/bin/tini -- /u…"   15 seconds ago   Up 14 seconds   0.0.0.0:32769->8080/tcp, :::32769->8080/tcp, 0.0.0.0:32768->50000/tcp, :::32768->50000/tcp   j1
+root@ip-172-31-36-91:~# docker exec -it j1 bash
+jenkins@d05d1b76a021:/$ whoami
+jenkins
+jenkins@d05d1b76a021:/$ exit
+exit
+
+
+root@ip-172-31-36-91:~# vim dockerfile
+
+FROM jenkins/jenkins
+MAINTAINER Nandu
+
+USER root
+
+save and quit
+
+ 
+root@ip-172-31-36-91:~# docker build -t myjenkins .
+[+] Building 0.5s (5/5) FINISHED                                                                                                                           docker:default
+ => [internal] load build definition from dockerfile                                                                                                                 0.1s
+ => => transferring dockerfile: 86B                                                                                                                                  0.1s
+ => [internal] load .dockerignore                                                                                                                                    0.0s
+ => => transferring context: 2B                                                                                                                                      0.0s
+ => [internal] load metadata for docker.io/jenkins/jenkins:latest                                                                                                    0.0s
+ => [1/1] FROM docker.io/jenkins/jenkins                                                                                                                             0.2s
+ => exporting to image                                                                                                                                               0.0s
+ => => exporting layers                                                                                                                                              0.0s
+ => => writing image sha256:e5389d01649be4e2b8b972da3533f6878cb8d397e756513e96cf7b3b357ca543                                                                         0.0s
+ => => naming to docker.io/library/myjenkins    									  																				 0.0s
+
+
+root@ip-172-31-36-91:~# 
+root@ip-172-31-36-91:~# docker rm -f j1
+j1
+
+
+root@ip-172-31-36-91:~# docker images
+REPOSITORY        TAG       IMAGE ID       CREATED      SIZE
+jenkins/jenkins   latest    852f243e02ca   5 days ago   476MB
+myjenkins         latest    e5389d01649b   5 days ago   476MB
+
+
+root@ip-172-31-36-91:~# docker run --name j1 -d -P myjenkins
+1dec23751e8f7efc457a9fc5ae059b35b1dde10a565de5d60f48c91758e8b14a
+
+
+root@ip-172-31-36-91:~# docker container ls
+CONTAINER ID   IMAGE       COMMAND                  CREATED          STATUS          PORTS                                                                                        NAMES
+1dec23751e8f   myjenkins   "/usr/bin/tini -- /u…"   18 seconds ago   Up 17 seconds   0.0.0.0:32771->8080/tcp, :::32771->8080/tcp, 0.0.0.0:32770->50000/tcp, :::32770->50000/tcp   j1
+
+
+root@ip-172-31-36-91:~# docker exec -it j1 bash
+root@1dec23751e8f:/# whoami
+root
+
+root@1dec23751e8f:/# 
+
+
+Example: ---  vim dockerfile
+	
+			FROM jenkins/jenkins
+ 			MAINTAINER Nandu
+
+			user root
+			
+			RUN apt-get update
+			RUN apt-get install -y git
+			RUN apt-get install -y tree
+			
+			user jenkins          
+		Here after completing the installation of git,tree we are changing the root user to jenkins user.
+		
+
+
+
+
+
+=====================================================================================================================================================================
+
+ADD : --
+=============
+
+			ADD will perfume whatever copy will do.
+			ADD has ability copy the files from remote server machine.
+			
+	copying the files from remote server
+	1. create the container  (docker run --name u1 -it ubuntu)
+	2. In container we have to install the wget, with the help of wget software we downloading the files from remote servers.
+	   apt-get update, apt-get install -y wget, wget URL of file.
+
+
+root@ip-172-31-32-78:~# wget https://get.jenkins.io/war-stable/2.426.3/jenkins.war
+--2024-02-03 06:15:52--  https://get.jenkins.io/war-stable/2.426.3/jenkins.war
+Resolving get.jenkins.io (get.jenkins.io)... 20.7.178.24, 2603:1030:408:5::15a
+Connecting to get.jenkins.io (get.jenkins.io)|20.7.178.24|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://ftp-chi.osuosl.org/pub/jenkins/war-stable/2.426.3/jenkins.war [following]
+--2024-02-03 06:15:52--  https://ftp-chi.osuosl.org/pub/jenkins/war-stable/2.426.3/jenkins.war
+Resolving ftp-chi.osuosl.org (ftp-chi.osuosl.org)... 64.50.236.52, 2600:3402:200:227::2
+Connecting to ftp-chi.osuosl.org (ftp-chi.osuosl.org)|64.50.236.52|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 89542726 (85M) [application/x-java-archive]
+Saving to: ‘jenkins.war’
+
+jenkins.war                                100%[======================================================================================>]  85.39M  3.46MB/s    in 25s     
+
+2024-02-03 06:16:18 (3.41 MB/s) - ‘jenkins.war’ saved [89542726/89542726]
+
+root@ip-172-31-32-78:~# 
+root@ip-172-31-32-78:~# ls
+docker-compose.yml  dockerfile  jenkins.war  snap
+root@ip-172-31-32-78:~# 
+root@ip-172-31-32-78:~# docker run --name u1 -it ubuntu
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+57c139bbda7e: Pull complete 
+Digest: sha256:e9569c25505f33ff72e88b2990887c9dcf230f23259da296eb814fc2b41af999
+Status: Downloaded newer image for ubuntu:latest
+root@d2b040144316:/# 	
+root@7cb7e615074f:/# apt-get update
+
+Get:1 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]
+Get:2 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]                        
+Get:3 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [44.0 kB]
+Get:4 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [1186 kB]
+Get:5 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1013 kB]
+Get:6 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [1392 kB]
+Get:7 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [119 kB]               
+Get:8 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [109 kB]
+Get:9 http://archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [17.5 MB]
+Get:10 http://archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [266 kB]
+Get:11 http://archive.ubuntu.com/ubuntu jammy/restricted amd64 Packages [164 kB]
+Get:12 http://archive.ubuntu.com/ubuntu jammy/main amd64 Packages [1792 kB]
+Get:13 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [49.8 kB]
+Get:14 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [1419 kB]
+Get:15 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1279 kB]
+Get:16 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [1455 kB]
+Get:17 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [78.3 kB]
+Get:18 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [32.6 kB]
+Fetched 28.3 MB in 5s (5539 kB/s)                          
+Reading package lists... Done
+
+root@7cb7e615074f:/# apt-get install -y wget
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  ca-certificates libpsl5 openssl publicsuffix
+The following NEW packages will be installed:
+  ca-certificates libpsl5 openssl publicsuffix wget
+0 upgraded, 5 newly installed, 0 to remove and 7 not upgraded.
+Need to get 1893 kB of archives.
+After this operation, 3944 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 openssl amd64 3.0.2-0ubuntu1.12 [1182 kB]
+Get:2 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 ca-certificates all 20230311ubuntu0.22.04.1 [155 kB]
+Get:3 http://archive.ubuntu.com/ubuntu jammy/main amd64 libpsl5 amd64 0.21.0-1.2build2 [58.4 kB]
+Get:4 http://archive.ubuntu.com/ubuntu jammy/main amd64 publicsuffix all 20211207.1025-1 [129 kB]
+Get:5 http://archive.ubuntu.com/ubuntu jammy/main amd64 wget amd64 1.21.2-2ubuntu1 [367 kB]
+Fetched 1893 kB in 0s (11.7 MB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package openssl.
+(Reading database ... 4395 files and directories currently installed.)
+Preparing to unpack .../openssl_3.0.2-0ubuntu1.12_amd64.deb ...
+Unpacking openssl (3.0.2-0ubuntu1.12) ...
+Selecting previously unselected package ca-certificates.
+Preparing to unpack .../ca-certificates_20230311ubuntu0.22.04.1_all.deb ...
+Unpacking ca-certificates (20230311ubuntu0.22.04.1) ...
+Selecting previously unselected package libpsl5:amd64.
+Preparing to unpack .../libpsl5_0.21.0-1.2build2_amd64.deb ...
+Unpacking libpsl5:amd64 (0.21.0-1.2build2) ...
+Selecting previously unselected package publicsuffix.
+Preparing to unpack .../publicsuffix_20211207.1025-1_all.deb ...
+Unpacking publicsuffix (20211207.1025-1) ...
+Selecting previously unselected package wget.
+Preparing to unpack .../wget_1.21.2-2ubuntu1_amd64.deb ...
+Unpacking wget (1.21.2-2ubuntu1) ...
+Setting up libpsl5:amd64 (0.21.0-1.2build2) ...
+Setting up wget (1.21.2-2ubuntu1) ...
+Setting up openssl (3.0.2-0ubuntu1.12) ...
+Setting up publicsuffix (20211207.1025-1) ...
+Setting up ca-certificates (20230311ubuntu0.22.04.1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 78.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.34.0 /usr/local/share/perl/5.34.0 /usr/lib/x86_64-linux-gnu/perl5/5.34 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.34 /usr/share/perl/5.34 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+debconf: falling back to frontend: Teletype
+Updating certificates in /etc/ssl/certs...
+137 added, 0 removed; done.
+Processing triggers for libc-bin (2.35-0ubuntu3.4) ...
+Processing triggers for ca-certificates (20230311ubuntu0.22.04.1) ...
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+done.
+
+
+
+		Here downloading jenkins.war inside the "u1" container. 
+		
+	copying the jenkins.war url path from chrome.
+
+root@7cb7e615074f:/# wget https://get.jenkins.io/war-stable/2.414.3/jenkins.war
+--2023-11-06 13:09:57--  https://get.jenkins.io/war-stable/2.414.3/jenkins.war
+Resolving get.jenkins.io (get.jenkins.io)... 20.7.178.24, 2603:1030:408:5::15a
+Connecting to get.jenkins.io (get.jenkins.io)|20.7.178.24|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://ftp-nyc.osuosl.org/pub/jenkins/war-stable/2.414.3/jenkins.war [following]
+--2023-11-06 13:09:57--  https://ftp-nyc.osuosl.org/pub/jenkins/war-stable/2.414.3/jenkins.war
+Resolving ftp-nyc.osuosl.org (ftp-nyc.osuosl.org)... 64.50.233.100, 2600:3404:200:237::2
+Connecting to ftp-nyc.osuosl.org (ftp-nyc.osuosl.org)|64.50.233.100|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 89542047 (85M) [application/x-java-archive]
+Saving to: 'jenkins.war'
+
+jenkins.war                                100%[======================================================================================>]  85.39M  12.5MB/s    in 7.0s    
+
+2023-11-06 13:10:05 (12.1 MB/s) - 'jenkins.war' saved [89542047/89542047]
+
+
+root@7cb7e615074f:/# exit
+
+	
+
+**	Want to download wget in 100 containers? what is the process?
+	Answer : by using "vim dockerfile"
+				
+				FROM ubuntu
+				MAINTAINER Nandu
+				
+				ADD https://get.jenkins.io/war-stable/2.414.3/jenkins.war /tmp
+				
+			    save & quit
+				
+root@ip-172-31-36-91:~# vim dockerfile
+FROM ubuntu
+MAINTAINER Nandu
+				
+ADD https://get.jenkins.io/war-stable/2.414.3/jenkins.war
+
+save & quit
+
+root@ip-172-31-36-91:~# docker build -t myubuntu .
+[+] Building 7.4s (7/7) FINISHED                                                                                                                           docker:default
+ => [internal] load build definition from dockerfile                                                                                                                 0.0s
+ => => transferring dockerfile: 130B                                                                                                                                 0.0s
+ => [internal] load .dockerignore                                                                                                                                    0.0s
+ => => transferring context: 2B                                                                                                                                      0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:latest                                                                                                     0.0s
+ => https://get.jenkins.io/war-stable/2.414.3/jenkins.war                                                                                                            5.1s
+ => [1/2] FROM docker.io/library/ubuntu                                                                                                                              0.0s
+ => [2/2] ADD https://get.jenkins.io/war-stable/2.414.3/jenkins.war /tmp                                                                                             1.3s
+ => exporting to image                                                                                                                                               0.5s
+ => => exporting layers                                                                                                                                              0.5s
+ => => writing image sha256:bb418dff2a0168e3364309af9af21ca17bf49169da455b5648be0ada74b2add8                                                                         0.0s
+ => => naming to docker.io/library/myubuntu 																														 0.0s
+ 
+root@ip-172-31-36-91:~# 
+root@ip-172-31-36-91:~# docker images
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+myubuntu     latest    bb418dff2a01   6 seconds ago   167MB
+ubuntu       latest    e4c58958181a   4 weeks ago     77.8MB
+
+root@ip-172-31-36-91:~# docker run --name u1 -it myubuntu
+root@6edd686ad258:/# cd /tmp
+root@6edd686ad258:/tmp# ls
+jenkins.war
+root@6edd686ad258:/tmp#
+
+
+Difference b/w copy and add?
+
+ Both have capability to copy files from host machine into the customized image.
+ But add can also download files from remote server machine.
+
+=====================================================================================================================================
+
+EXPOSE: ---
+================
+
+root@ip-172-31-36-91:~# 
+root@ip-172-31-36-91:~# docker run --name a1 -d -P nginx
+Unable to find image 'nginx:latest' locally
+latest: Pulling from library/nginx
+578acb154839: Pull complete 
+e398db710407: Pull complete 
+85c41ebe6d66: Pull complete 
+7170a263b582: Pull complete 
+8f28d06e2e2e: Pull complete 
+6f837de2f887: Pull complete 
+c1dfc7e1671e: Pull complete 
+Digest: sha256:86e53c4c16a6a276b204b0fd3a8143d86547c967dc8258b3d47c3a21bb68d3c6
+Status: Downloaded newer image for nginx:latest
+8acbd290c34d0c1cf7cbed2d30ace6b4bd3a61f86c0a67c60739ee23b8ee8a52
+
+
+root@ip-172-31-36-91:~# 
+root@ip-172-31-36-91:~# docker container ls
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                                     NAMES
+8acbd290c34d   nginx     "/docker-entrypoint.…"   9 seconds ago   Up 7 seconds   0.0.0.0:32772->80/tcp, :::32772->80/tcp   a1
+root@ip-172-31-36-91:~# 
+root@ip-172-31-36-91:~# 
+
+root@ip-172-31-36-91:~# vim dockerfile
+FROM nginx
+MAINTAINER Nandu
+
+EXPOSE 90     ===> Here giving 90 port so it will work on default 80 port and am asking to work also on 90 port also for this purpose we use 'EXPOSE"
+Save and quit
+
+root@ip-172-31-36-91:~# docker build -t mynginx .
+[+] Building 0.3s (5/5) FINISHED                                                                                                                           docker:default
+ => [internal] load build definition from dockerfile                                                                                                                 0.1s
+ => => transferring dockerfile: 76B                                                                                                                                  0.1s
+ => [internal] load .dockerignore                                                                                                                                    0.1s
+ => => transferring context: 2B                                                                                                                                      0.0s
+ => [internal] load metadata for docker.io/library/nginx:latest                                                                                                      0.0s
+ => [1/1] FROM docker.io/library/nginx                                                                                                                               0.1s
+ => exporting to image                                                                                                                                               0.0s
+ => => exporting layers                                                                                                                                              0.0s
+ => => writing image sha256:07ab64a3285ad8a63c571c0923766bf65a81806cccfc53a3a1bfa5a7791bcc7b                                                                         0.0s
+ => => naming to docker.io/library/mynginx      0.0s
+ 
+root@ip-172-31-36-91:~# docker run --name a2 -d -P mynginx
+e726bd0ad7e6aa28c3218a6af912a550301633cb94d03838498c87158dd3c8a8
+root@ip-172-31-36-91:~# docker container ls
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                                                                              NAMES
+e726bd0ad7e6   mynginx   "/docker-entrypoint.…"   6 seconds ago   Up 5 seconds   0.0.0.0:32774->80/tcp, :::32774->80/tcp, 0.0.0.0:32773->90/tcp, :::32773->90/tcp   a2
+8acbd290c34d   nginx     "/docker-entrypoint.…"   2 minutes ago   Up 2 minutes   0.0.0.0:32772->80/tcp, :::32772->80/tcp                                            a1
+root@ip-172-31-36-91:~# 
+
+=================================================================================================================================================================
+
+ENTRYPOINT:---   Entrypoint tells you what is the default process of perticular container. Entrypoint specifies the default process
+===============
+			Process ==== is conatainer of that :COMMAND" part.
+
+	Every Container is trigering one process which is known as the default process of the container.
+	Container can't trigger two different process. any docker can trigger only one default process.
+	As long as this default process is running the container will be in running state.
+	All linux based containers the default process is the "shell". Because the shell is available directly in the run commmand "-it" we can go inside the shell.
+	For centos,ubuntu this kind of containers shell is the default container process, when we close the shell "exit" the container goes into exited state because this containers depends on the default process.
+	For tomcat,nginx,httpd containers "Shell" is not running. for this containers if we want to launch the shell the command - "docker exec -it container_name/ID bash"
+	
+	
+	Practicle: ---
+	===============
+	
+root@ip-172-31-36-91:~# 
+root@ip-172-31-36-91:~# docker run --name c1 -it centos
+Unable to find image 'centos:latest' locally
+latest: Pulling from library/centos
+a1d0c7532777: Pull complete 
+Digest: sha256:a27fd8080b517143cbbbab9dfb7c8571c40d67d534bbdee55bd6c473f432b177
+Status: Downloaded newer image for centos:latest
+[root@e6f429b0f371 /]# root@ip-172-31-36-91:~#  ===========  >Here we giving ctrl+p,ctrl+q
+
+root@ip-172-31-36-91:~# 
+root@ip-172-31-36-91:~# docker run --name u1 -it ubuntu
+root@47458558c328:/# root@ip-172-31-36-91:~#    ==============> ctrl+p,ctrl+q
+
+root@ip-172-31-36-91:~# 
+root@ip-172-31-36-91:~# docker run --name h1 -d -P httpd
+Unable to find image 'httpd:latest' locally
+latest: Pulling from library/httpd
+578acb154839: Pull complete 
+c1a8c8567b78: Pull complete 
+10b9ab03bf45: Pull complete 
+74dbedf7ddc0: Pull complete 
+6a3b76b70f73: Pull complete 
+Digest: sha256:4e24356b4b0aa7a961e7dfb9e1e5025ca3874c532fa5d999f13f8fc33c09d1b7
+Status: Downloaded newer image for httpd:latest
+04a10e654d0f7967054d21f89bc0af14a45972bbc4edd926394fd1ab4f190e44
+
+root@ip-172-31-36-91:~#  
+root@ip-172-31-36-91:~# docker run --name n1 -d -P nginx
+Unable to find image 'nginx:latest' locally
+latest: Pulling from library/nginx
+578acb154839: Already exists 
+e398db710407: Pull complete 
+85c41ebe6d66: Pull complete 
+7170a263b582: Pull complete 
+8f28d06e2e2e: Pull complete 
+6f837de2f887: Pull complete 
+c1dfc7e1671e: Pull complete 
+Digest: sha256:86e53c4c16a6a276b204b0fd3a8143d86547c967dc8258b3d47c3a21bb68d3c6
+Status: Downloaded newer image for nginx:latest
+3a4ce12f360af83211067e14fe731a1a8eb36d56a72cccdf1a362c4a1f00eaf2
+
+root@ip-172-31-36-91:~#
+root@ip-172-31-36-91:~# docker run --name t1 -d -P tomcat
+Unable to find image 'tomcat:latest' locally
+latest: Pulling from library/tomcat
+43f89b94cd7d: Pull complete 
+a4452d37e1e4: Pull complete 
+66bf1e8cc497: Pull complete 
+39b9b405c53f: Pull complete 
+74594af5feb5: Pull complete 
+190e928f9c42: Pull complete 
+e55c53c8b3ca: Pull complete 
+64f862abfc3c: Pull complete 
+Digest: sha256:86ada4acd78ca43972ad9f31e09ef1da00ca181cc0a204e7c31dc566d1e5cd60
+Status: Downloaded newer image for tomcat:latest
+027ddd63cd9c0ec4ce51da87ee6f2923eca2e5606a6d04777e911229d33bae3e
+root@ip-172-31-36-91:~#
+root@ip-172-31-36-91:~# docker container ls
+CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS              PORTS                                         NAMES
+027ddd63cd9c   tomcat    "catalina.sh run"        4 seconds ago        Up 2 seconds        0.0.0.0:32777->8080/tcp, :::32777->8080/tcp   t1
+3a4ce12f360a   nginx     "/docker-entrypoint.…"   About a minute ago   Up About a minute   0.0.0.0:32776->80/tcp, :::32776->80/tcp       n1
+04a10e654d0f   httpd     "httpd-foreground"       About a minute ago   Up About a minute   0.0.0.0:32775->80/tcp, :::32775->80/tcp       h1
+47458558c328   ubuntu    "/bin/bash"              3 minutes ago        Up 3 minutes                                                      u1
+e6f429b0f371   centos    "/bin/bash"              3 minutes ago        Up 3 minutes                                                      c1
+root@ip-172-31-36-91:~#
+
+
+Here we can see the "command" part is called as process
+for ubuntu,centos of linux shell is the default process, if we give exit it is permunantly goes to exited state.
+for other process like tomcat,nginx,httpd if we are in shell command it goes to running state because they are running in someother process.
+
+
+vim dockerfile      ====================>        (This process will only used by constamized images only we fallow this process)
+
+FROM ubuntu
+MAINTAINER Nandu
+
+RUN apt-get update
+RUN apt-get install -y openjdk-11-jdk
+
+ADD https://get.jenkins.io/war-stable/2.414.3/jenkins.war /
+
+ENTRYPOINT ["java","-jar","jenkins.war"]
+
+Save & quit
+
+root@ip-172-31-36-91:~# vim dockerfile
+
+FROM ubuntu
+MAINTAINER Nandu
+
+RUN apt-get update
+RUN apt-get install -y openjdk-11-jdk
+
+EXPOSE 80
+ENTRYPOINT ["java","-jar","jenkins.war"]
+
+
+root@ip-172-31-36-91:~# docker build -t myubuntu .
+[+] Building 68.0s (9/9) FINISHED                                                                                                                          docker:default
+ => [internal] load build definition from dockerfile                                                                                                                 0.0s
+ => => transferring dockerfile: 229B                                                                                                                                 0.0s
+ => [internal] load .dockerignore                                                                                                                                    0.1s
+ => => transferring context: 2B                                                                                                                                      0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:latest                                                                                                     0.8s
+ => [1/4] FROM docker.io/library/ubuntu@sha256:2b7412e6465c3c7fc5bb21d3e6f1917c167358449fecac8176c6e496e5c1f05f                                                      2.7s
+ => => resolve docker.io/library/ubuntu@sha256:2b7412e6465c3c7fc5bb21d3e6f1917c167358449fecac8176c6e496e5c1f05f                                                      0.0s
+ => => sha256:2b7412e6465c3c7fc5bb21d3e6f1917c167358449fecac8176c6e496e5c1f05f 1.13kB / 1.13kB                                                                       0.0s
+ => => sha256:c9cf959fd83770dfdefd8fb42cfef0761432af36a764c077aed54bbc5bb25368 424B / 424B                                                                           0.0s
+ => => sha256:e4c58958181a5925816faa528ce959e487632f4cfd192f8132f71b32df2744b4 2.30kB / 2.30kB                                                                       0.0s
+ => => sha256:aece8493d3972efa43bfd4ee3cdba659c0f787f8f59c82fb3e48c87cbb22a12e 29.54MB / 29.54MB                                                                     0.5s
+ => => extracting sha256:aece8493d3972efa43bfd4ee3cdba659c0f787f8f59c82fb3e48c87cbb22a12e                                                                            2.0s
+ => https://get.jenkins.io/war-stable/2.414.3/jenkins.war                                                                                                            9.3s
+ => [2/4] RUN apt-get update                                                                                                                                        11.9s
+ => [3/4] RUN apt-get install -y openjdk-11-jdk                                                                                                                     41.7s
+ => [4/4] ADD https://get.jenkins.io/war-stable/2.414.3/jenkins.war /                                                                                                1.5s 
+ => exporting to image                                                                                                                                               9.1s 
+ => => exporting layers                                                                                                                                              9.1s 
+ => => writing image sha256:def4772b2d46068a0460904b4c7bcf5f90a198cb736cd6229d485ba2594badbf                                                                         0.0s 
+ => => naming to docker.io/library/myubuntu  																														 0.0s
+ 
+root@ip-172-31-36-91:~#                                                                                                                                                   
+root@ip-172-31-36-91:~# docker images
+REPOSITORY   TAG       IMAGE ID       CREATED              SIZE
+myubuntu     latest    def4772b2d46   About a minute ago   784MB
+root@ip-172-31-36-91:~# docker run --name u1 -it -d myubuntu
+
+root@ip-172-31-36-91:~# docker ps -a
+CONTAINER ID   IMAGE      COMMAND                  CREATED          STATUS                        PORTS     NAMES
+9a62c33fd983   myubuntu   "java -jar jenkins.w…"   39 seconds ago   Exited (130) 11 seconds ago             u1
+
+
+Here we can see that COMMAND process we changed to "Java -jar jenkins.war".
+
+Note:--
+		If we replace the ENTRYPOINT as CMD then also it will work
+		Both entrypoint and cmd can be used to specify the default process of the container
+		
+
+================================================================================================================================================================
+
+CMD:----
+==========
+
+Both CMD and ENTRYPOINT can be used to specify the default process of the container.
+
+root@ip-172-31-36-91:~# vim dockerfile
+
+FROM ubuntu
+MAINTAINER Nandu
+
+RUN apt-get update
+RUN apt-get install -y nginx
+
+EXPOSE 80
+CMD ["nginx","-g","daemon off;"]
+ 
+Save and quit
+
+root@ip-172-31-36-91:~# docker build -t myubuntu .
+[+] Building 16.2s (7/7) FINISHED                                                                                                                           docker:default
+ => [internal] load build definition from dockerfile                                                                                                                  0.0s
+ => => transferring dockerfile: 159B                                                                                                                                  0.0s
+ => [internal] load .dockerignore                                                                                                                                     0.0s
+ => => transferring context: 2B                                                                                                                                       0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:latest                                                                                                      0.3s
+ => [1/3] FROM docker.io/library/ubuntu@sha256:2b7412e6465c3c7fc5bb21d3e6f1917c167358449fecac8176c6e496e5c1f05f                                                       2.4s
+ => => resolve docker.io/library/ubuntu@sha256:2b7412e6465c3c7fc5bb21d3e6f1917c167358449fecac8176c6e496e5c1f05f                                                       0.0s
+ => => sha256:2b7412e6465c3c7fc5bb21d3e6f1917c167358449fecac8176c6e496e5c1f05f 1.13kB / 1.13kB                                                                        0.0s
+ => => sha256:c9cf959fd83770dfdefd8fb42cfef0761432af36a764c077aed54bbc5bb25368 424B / 424B                                                                            0.0s
+ => => sha256:e4c58958181a5925816faa528ce959e487632f4cfd192f8132f71b32df2744b4 2.30kB / 2.30kB                                                                        0.0s
+ => => sha256:aece8493d3972efa43bfd4ee3cdba659c0f787f8f59c82fb3e48c87cbb22a12e 29.54MB / 29.54MB                                                                      0.5s
+ => => extracting sha256:aece8493d3972efa43bfd4ee3cdba659c0f787f8f59c82fb3e48c87cbb22a12e                                                                             1.7s
+ => [2/3] RUN apt-get update                                                                                                                                          4.8s
+ => [3/3] RUN apt-get install -y nginx                                                                                                                                7.7s
+ => exporting to image                                                                                                                                                0.7s 
+ => => exporting layers                                                                                                                                               0.7s 
+ => => writing image sha256:925fda7b2bf4a92479b44d02d6d64303a0aec7c358aee7f3e85e13952bba476d                                                                          0.0s 
+ => => naming to docker.io/library/myubuntu  																														  0.0s
+
+ 
+root@ip-172-31-36-91:~#                                                                                                                                                    
+root@ip-172-31-36-91:~# docker images                                                                                                                                      
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+myubuntu     latest    925fda7b2bf4   20 seconds ago   179MB
+
+root@ip-172-31-36-91:~# 
+root@ip-172-31-36-91:~# docker run --name u1 -d -P myubuntu
+2da494baf64ddae66cbaa24f3371aff4dad160d47dd3a9ac3316ce681526d8f2
+
+root@ip-172-31-36-91:~# 
+root@ip-172-31-36-91:~# docker container ls
+CONTAINER ID   IMAGE      COMMAND                  CREATED         STATUS         PORTS                                     NAMES
+2da494baf64d   myubuntu   "nginx -g 'daemon of…"   9 seconds ago   Up 8 seconds   0.0.0.0:32770->80/tcp, :::32770->80/tcp   u1
+root@ip-172-31-36-91:~#
+
+
+root@ip-172-31-36-91:~# docker run --name u2 -P -it myubuntu bash
+root@5e9a2463db7e:/# 
+root@5e9a2463db7e:/# 
+root@5e9a2463db7e:/# exit
+exit
+
+
+
+root@ip-172-31-36-91:~# docker container ls
+CONTAINER ID   IMAGE      COMMAND                  CREATED          STATUS          PORTS                                     NAMES
+2da494baf64d   myubuntu   "nginx -g 'daemon of…"   13 minutes ago   Up 13 minutes   0.0.0.0:32770->80/tcp, :::32770->80/tcp   u1
+
+
+
+root@ip-172-31-36-91:~# docker ps -a
+CONTAINER ID   IMAGE      COMMAND                  CREATED          STATUS                      PORTS                                     NAMES
+5e9a2463db7e   myubuntu   "bash"                   26 seconds ago   Exited (0) 20 seconds ago                                             u2
+2da494baf64d   myubuntu   "nginx -g 'daemon of…"   14 minutes ago   Up 14 minutes               0.0.0.0:32770->80/tcp, :::32770->80/tcp   u1
+
+
+NOTE : ----   Here we changing the default process on docker run command this will work only on "CMD" instruction in "dockerfile", It will not support to "ENTRYPOINT".
+
+
+root@ip-172-31-36-91:~# 
+root@ip-172-31-36-91:~# docker run --name u3 -P -it myubuntu date
+Thu Nov  9 03:01:58 UTC 2023
+root@ip-172-31-36-91:~# docker ps -a
+CONTAINER ID   IMAGE      COMMAND                  CREATED              STATUS                          PORTS                                     NAMES
+2cbe6faa6b7d   myubuntu   "date"                   5 seconds ago        Exited (0) 4 seconds ago                                                  u3
+5e9a2463db7e   myubuntu   "bash"                   About a minute ago   Exited (0) About a minute ago                                             u2
+2da494baf64d   myubuntu   "nginx -g 'daemon of…"   15 minutes ago       Up 15 minutes                   0.0.0.0:32770->80/tcp, :::32770->80/tcp   u1
+root@ip-172-31-36-91:~# 
+
+
+NOTE: -----
+===============
+
+1. If you specify the default process using CMD instructions that default process can be modified in the docker run command.
+   docker run command is only used for creating the containers, at that time of creating containers if we want to change the default process, In "dockerfile" we have to use "CMD" instructions.
+2. If the dockerfile is using ENTRYPOINT instructions, In docker run command we can't change it.
+
+=============================================================================================================================================================================================================
+
+
+													DOCKER NETWORKS
+												==========================
+												
+	Docker supports four types of networks
+	
+	1. bridge    172.18.0.2 172.18.0.3      172.19.0.2
+	2. host
+	3. null
+	4. overlay
+
+52077133
+
+Bridge Network : --- Bridge network is the default network on which containers run in one server, when containers are running in same server. 
+
+				For creating network the command is -- "docker network create --driver bridge filename"  (no need to mention "--driver bridge" because bridge network is the default network in docker networks. 
+				automatically it will create that network under bridge network only.   --- "docker network create filename"
+				
+				Created Nandu1,Nandu2 networks 
+				In Nandu1 downloaded "busybox" image and created c1 container command is -- "docker run --name c1 -it --network Nandu1 busybox".
+				give ctrl+p,ctrl+q and give "docker inspect c1" 
+				
+				In Nandu1 created another container as c2   "docker run --name c2 -it --network Nandu1 busybox
+				give ctrl+p,ctrl+q 
+				
+				Now create another network name as Nandu2
+				docker network create Nandu2, In Nandu2 create a c3 container with busybox image
+				
+				docker run --name c3 -it --network Nandu2 busybox
+				
+		If  we want to connect Nandu1 network container of c2 to Nandu2 network the command is   "docker network connect Nandu2 c2"
+		
+		
+		
+		
+											docker network create --driver bridge Nandu1
+											docker network create Nandu2 
+											docker network ls
+											docker run --name c1 -it --network Nandu1 busybox
+											docker inspect c1
+											docker run --name c2 -it --network Nandu1 busybox
+											docker inspect c2
+											docker run --name c3 -it --network Nandu2 busybox
+											docker inspect c3
+											docker network connect Nandu2 c2
+											docker attach c2
+											docker attach c3
+		
+		
+		
+		
+					
+			*** To check the list of networks "docker network ls"
+			
+			Here Nandu1 , Nandu2 are bridge network
+			
+				Created two networks as Nandu1,Nandu2
+				In Nandu1 created two containers c1,c2  c1 Ip address is 172.18.0.2 and c2 Ip address is 172.18.0.3
+				In Nandu2 network created one container c3 Ip address is 172.19.0.2
+			
+	How we change Ip address of networks when we creating it?
+			docker network create --driver bridge --subnet 10.0.0.0/32 Nandu --------(The range of 32 is below 32 or equal to 32)
+			10.0.0.0/28 === 32-28 = 4 (2 power 4 = 16 IP addresses it can generate.  
+			
+			
+			
+												docker network create --driver bridge --subnet 10.0.0.0/28 Nandu 
+												docker run --name n1 -d -P --network Nandu nginx
+												docker container ls
+												docker inspect n1
+		
+
+
+		To delete the network container - docker network rm container_name
+		
+	
+	
+		One container can be present on any n no of networks. "docker network connect Nandu2 c2"  Here Nandu2 is bridge_name & C2 is container_name
+		
+		
+ public registry:---
+		
+ 
+ Private registry:---
+============================
+ 
+  
+  Here login to hub.docker.com and login into that account 
+  
+    docker login     ---------> give docker login in terminal
+             
+			 
+			    vim dockerfile  
+						docker network create --driver bridge --subnet 10.0.0.0/28 Nandu 
+						docker run --name n1 -d -P --network Nandu nginx
+						docker container ls
+						docker inspect n1
+  
+          docker build -t challanandu/nginx112 .  --------> This command is for execution of dockerfile
+          docker images
+          docker push challanandu/nginx112
+		  
+		  
+		  
+ Here creating private registry
+ 
+Goto hub.docker.com =====> click on repositories====>Create repository name=====>select the private option====> click on create
+Now we have to create a folder with name of challanandu/nginx143 as a container.
+   
+
+root@ip-172-31-19-75:~# 
+root@ip-172-31-19-75:~# docker build -t challanandu/nginx143 .    =====> executing the dockerfile with username and repositroy name
+[+] Building 1.6s (8/8) FINISHED                                                                                                                   docker:default
+ => [internal] load build definition from dockerfile                                                                                                         0.0s
+ => => transferring dockerfile: 160B                                                                                                                         0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:latest                                                                                             1.5s
+ => [auth] library/ubuntu:pull token for registry-1.docker.io                                                                                                0.0s
+ => [internal] load .dockerignore                                                                                                                            0.0s
+ => => transferring context: 2B                                                                                                                              0.0s
+ => [1/3] FROM docker.io/library/ubuntu:latest@sha256:2e863c44b718727c860746568e1d54afd13b2fa71b160f5cd9058fc436217b30                                       0.0s
+ => CACHED [2/3] RUN apt-get update                                                                                                                          0.0s
+ => CACHED [3/3] RUN apt-get install -y nginx                                                                                                                0.0s
+ => exporting to image                                                                                                                                       0.0s
+ => => exporting layers                                                                                                                                      0.0s
+ => => writing image sha256:743a74cff59558a8884be81e23617f9561b093368a014943fcb2f3c62f775fcd                                                                 0.0s
+ => => naming to docker.io/challanandu/nginx143                                                                                                              0.0s
+root@ip-172-31-19-75:~# docker images
+REPOSITORY             TAG       IMAGE ID       CREATED       SIZE
+challanandu/nginx112   latest    743a74cff595   2 hours ago   124MB
+challanandu/nginx143   latest    743a74cff595   2 hours ago   124MB
+challanandu/nginx98    latest    743a74cff595   2 hours ago   124MB
+nginx                  latest    e0c9858e10ed   4 days ago    188MB
+root@ip-172-31-19-75:~# docker push challanandu/nginx143                 ==> Here we have to push challanandu/nginx143 to privacy registry
+Using default tag: latest
+The push refers to repository [docker.io/challanandu/nginx143]
+1377c1344f26: Mounted from challanandu/nginx112 
+ece5e3a4e27c: Mounted from challanandu/nginx112 
+a30a5965a4f7: Mounted from challanandu/nginx112 
+latest: digest: sha256:cc668e3077118037040c5a654732ec5cf12d68afd4653de0a445fab064b08603 size: 952
+root@ip-172-31-19-75:~# 
+	
+	
+	
+	Another method of creating private registery
+	
+root@ip-172-31-6-19:~# docker run --name lr -d -p 5000:5000 registry
+Unable to find image 'registry:latest' locally
+latest: Pulling from library/registry
+dc0decf4841d: Pull complete 
+6cb0aa443e23: Pull complete 
+813676e291ef: Pull complete 
+dc2fb7dcec61: Pull complete 
+916205650bfe: Pull complete 
+Digest: sha256:543dade69668e02e5768d7ea2b0aa4fae6aa7384c9a5a8dbecc2be5136079ddb
+Status: Downloaded newer image for registry:latest
+40d6a317760b7fdeaebb67561d61cbcbf2c3c61f32a0831a8db92ad7eb6d4e1d
+root@ip-172-31-6-19:~# 
+root@ip-172-31-6-19:~# docker images
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+registry     latest    c18a86d35e98   14 months ago   25.4MB
+root@ip-172-31-6-19:~# 
+
+In alpine image place we can give any image as we required.
+
+root@ip-172-31-6-19:~# docker pull alpine
+Using default tag: latest
+latest: Pulling from library/alpine
+38a8310d387e: Pull complete 
+Digest: sha256:21dc6063fd678b478f57c0e13f47560d0ea4eeba26dfc947b2a4f81f686b9f45
+Status: Downloaded newer image for alpine:latest
+docker.io/library/alpine:latest
+root@ip-172-31-6-19:~# docker images
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+alpine       latest    4048db5d3672   11 days ago     7.84MB
+registry     latest    c18a86d35e98   14 months ago   25.4MB
+
+
+root@ip-172-31-6-19:~# docker tag alpine localhost:5000/alpine
+root@ip-172-31-6-19:~# docker push localhost:5000/alpine
+Using default tag: latest
+The push refers to repository [localhost:5000/alpine]
+3e01818d79cd: Pushed 
+latest: digest: sha256:fa7042902b0e812e73bbee26a6918a6138ccf6d7ecf1746e1488c0bd76cf1f34 size: 527
+root@ip-172-31-6-19:~# 
+	
+	
+	======================================================================================================================================
+	
+	
+
+Host network: ---- Host network is used to allow to create only one container want to create for one server then we use host network. That container automatically uses the IP Address of the "Host server machine"
+
+Null network: ---- If we create a container in this null network, It won't communicate with other containers and it will not communicate with host server machine also.  [This network used for docker security (or) confidential data].
+
+Overlay: ---- when containers are running on multiple servers and they want to communicate with each other they depend on overlay network. 
+
+				In docker swarm containers will be run in this overlay network.
+				default overlay network has perticular name ===> ingress
+				Ingress is automatically created when the docker swarm(replicas) is setup.
+				
+root@Manager:~# docker network ls
+NETWORK ID     NAME              DRIVER    SCOPE
+badb147e1111   bridge            bridge    local
+949a3ad00ac7   docker_gwbridge   bridge    local
+abec6165756a   host              host      local
+n640m11gpuaz   ingress           overlay   swarm
+060c638c027e   none              null      local
+root@Manager:~# 
+
+root@Manager:~# docker network create --driver overlay Nandu1
+b3y45pwjrbsqxubcjivv0dqcz
+root@Manager:~# docker network create --driver overlay Nandu2
+2axozvs2nolthwo7fughra5d2
+root@Manager:~#
+
+root@Manager:~# docker network ls
+NETWORK ID     NAME              DRIVER    SCOPE
+b3y45pwjrbsq   Nandu1            overlay   swarm
+2axozvs2nolt   Nandu2            overlay   swarm
+badb147e1111   bridge            bridge    local
+949a3ad00ac7   docker_gwbridge   bridge    local
+abec6165756a   host              host      local
+n640m11gpuaz   ingress           overlay   swarm
+060c638c027e   none              null      local
+root@Manager:~#
+
+root@Manager:~# docker service create --name webserver -p 8080:80 --replicas 4 --network Nandu1 httpd
+ezl9188kvahh7if4z6g02g10n
+overall progress: 4 out of 4 tasks 
+1/4: running   [==================================================>] 
+2/4: running   [==================================================>] 
+3/4: running   [==================================================>] 
+4/4: running   [==================================================>] 
+verify: Service converged 
+root@Manager:~# 
+root@Manager:~# docker service ls
+ID             NAME        MODE         REPLICAS   IMAGE          PORTS
+ezl9188kvahh   webserver   replicated   4/4        httpd:latest   *:8080->80/tcp
+root@Manager:~# 
+root@Manager:~# docker service ps webserver
+ID             NAME              IMAGE          NODE      DESIRED STATE   CURRENT STATE                ERROR                              PORTS
+mu4ihzv643iz   webserver.1       httpd:latest   worker2   Running         Running about a minute ago                                      
+szk4z8b7fusw   webserver.2       httpd:latest   worker1   Running         Running about a minute ago                                      
+48bbl8y87v06   webserver.3       httpd:latest   worker1   Running         Running 29 seconds ago                                          
+xi988u9vvbwc    \_ webserver.3   httpd:latest   Manager   Shutdown        Rejected 36 seconds ago      "No such image: httpd:latest@s…"   
+c9bcm607czpj    \_ webserver.3   httpd:latest   Manager   Shutdown        Rejected 41 seconds ago      "No such image: httpd:latest@s…"   
+ogbq0vaeb5n2    \_ webserver.3   httpd:latest   Manager   Shutdown        Rejected 45 seconds ago      "No such image: httpd:latest@s…"   
+7190ievvjwnw    \_ webserver.3   httpd:latest   Manager   Shutdown        Rejected 52 seconds ago      "No such image: httpd:latest@s…"   
+ns3xqec9xoif   webserver.4       httpd:latest   worker2   Running         Running about a minute ago                                      
+root@Manager:~# 
+
+
+
+Now we creating containers in default overlay network and now want to migrat it into Nandu2 network
+
+command  --  docker service update --network-add Nandu2 appserver
+
+
+
+													Host port    Container port 
+                                                           |     |
+root@Manager:~# docker service create --name appserver -p 9090:8080 --replicas 4 tomcat
+q8dsi2kjiv1zqxb4ow0ysqa3o
+overall progress: 4 out of 4 tasks 
+1/4: running   [==================================================>] 
+2/4: running   [==================================================>] 
+3/4: running   [==================================================>] 
+4/4: running   [==================================================>] 
+verify: Service converged 
+root@Manager:~# 
+root@Manager:~# docker service ls
+ID             NAME        MODE         REPLICAS   IMAGE           PORTS
+q8dsi2kjiv1z   appserver   replicated   4/4        tomcat:latest   *:9090->8080/tcp
+ezl9188kvahh   webserver   replicated   4/4        httpd:latest    *:8080->80/tcp
+root@Manager:~# 
+
+
+
+							Merging default overlay network containers to Nandu2 network
+							
+							
+
+root@Manager:~# docker service update --network-add Nandu2 appserver
+appserver
+overall progress: 4 out of 4 tasks 
+1/4: running   [==================================================>] 
+2/4: running   [==================================================>] 
+3/4: running   [==================================================>] 
+4/4: running   [==================================================>] 
+verify: Service converged 
+root@Manager:~# 
+root@Manager:~# docker service ls
+ID             NAME        MODE         REPLICAS   IMAGE           PORTS
+q8dsi2kjiv1z   appserver   replicated   4/4        tomcat:latest   *:9090->8080/tcp
+ezl9188kvahh   webserver   replicated   4/4        httpd:latest    *:8080->80/tcp
+root@Manager:~# 
+root@Manager:~# docker service inspect appserver --pretty
+
+ID:             q8dsi2kjiv1zqxb4ow0ysqa3o
+Name:           appserver
+Service Mode:   Replicated
+ Replicas:      4
+UpdateStatus:
+ State:         completed
+ Started:       49 seconds ago
+ Completed:     27 seconds ago
+ Message:       update completed
+Placement:
+UpdateConfig:
+ Parallelism:   1
+ On failure:    pause
+ Monitoring Period: 5s
+ Max failure ratio: 0
+ Update order:      stop-first
+RollbackConfig:
+ Parallelism:   1
+ On failure:    pause
+ Monitoring Period: 5s
+ Max failure ratio: 0
+ Rollback order:    stop-first
+ContainerSpec:
+ Image:         tomcat:latest@sha256:ca127a5ea7c0987a7782e3faeb65af0ce9e2863b4c12a32864dad880ba1cc176
+ Init:          false
+Resources:
+Networks: Nandu2 
+Endpoint Mode:  vip
+Ports:
+ PublishedPort = 9090
+  Protocol = tcp
+  TargetPort = 8080
+  PublishMode = ingress 
+
+root@Manager:~# 
+
+
+				Now canceling the Marging Nandu2 network to going back to default overlay network
+
+						command ---- docker service update --network-rm Nandu2 appserver
+
+
+root@Manager:~# docker service update --network-rm Nandu2 appserver
+appserver
+overall progress: 4 out of 4 tasks 
+1/4: running   [==================================================>] 
+2/4: running   [==================================================>] 
+3/4: running   [==================================================>] 
+4/4: running   [==================================================>] 
+verify: Service converged 
+root@Manager:~# 
+							Romving the containers and networks
+							
+root@Manager:~# docker service rm appserver
+appserver
+root@Manager:~# docker service rm webserver
+webserver
+root@Manager:~# 
+root@Manager:~# docker network rm Nandu1
+Nandu1
+root@Manager:~# docker network rm Nandu2
+Nandu2
+root@Manager:~# 
+
+
+When we create httpd with 4 replicas and also created tomcat with four replicas, when we don't specify which network, they will run on default of "ingress(overlay)" network.
+Then the tomcat & httpd will communicate with eachother.
+But httpd am creating for one application and tomcat am creating for another application.
+I don't want httpd communicate with tomcat, for that we creating customized overlay networks.
+
+ 
+						
+for that we using
+==================================================================================================================================================================================
+
+Registry:----
+================
+
+There are two types of registries
+
+1. Public registry
+2. Private registry
+
+
+***How do we setup and upload into the public registry?   
+	
+	Public registry is generally setup on docker hub.
+	
+	(Public registry means anyone can download the images from our public registry)  (registry means docker_hub --hub.docker.com)
+		login with hub.docker.com with our credentials  ----- username : challanandu, Password: Nandu@12345
+		
+		For downloading images from docker hub command is "docker pull image_name" command same as for upload we use "docker push Image_name" command
+		Example: --- docker push challanandu/nginx11
+				
+root@ip-172-31-36-91:~# docker login
+Log in with your Docker ID or email address to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com/ to create one.
+You can log in with your password or a Personal Access Token (PAT). Using a limited-scope PAT grants better security and is required for organizations using SSO. Learn more at https://docs.docker.com/go/access-tokens/
+
+Username: challanandu
+Password: Nandu@12345
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+root@ip-172-31-36-91:~# vi dockerfile
+FROM ubuntu
+MAINTAINER Nandu
+
+RUN apt-get update 
+RUN apt-get install -y nginx
+
+EXPOSE 80
+CMD ["nginx:,"-g","daemon off;"]
+
+Save and quit
+
+
+root@ip-172-31-36-91:~# docker build -t challanandu/nginx11 .
+[+] Building 16.6s (8/8) FINISHED                                                                                                                           docker:default
+ => [internal] load build definition from dockerfile                                                                                                                  0.0s
+ => => transferring dockerfile: 159B                                                                                                                                  0.0s
+ => [internal] load .dockerignore                                                                                                                                     0.0s
+ => => transferring context: 2B                                                                                                                                       0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:latest                                                                                                      0.5s
+ => [auth] library/ubuntu:pull token for registry-1.docker.io                                                                                                         0.0s
+ => [1/3] FROM docker.io/library/ubuntu@sha256:2b7412e6465c3c7fc5bb21d3e6f1917c167358449fecac8176c6e496e5c1f05f                                                       2.5s
+ => => resolve docker.io/library/ubuntu@sha256:2b7412e6465c3c7fc5bb21d3e6f1917c167358449fecac8176c6e496e5c1f05f                                                       0.0s
+ => => sha256:c9cf959fd83770dfdefd8fb42cfef0761432af36a764c077aed54bbc5bb25368 424B / 424B                                                                            0.0s
+ => => sha256:e4c58958181a5925816faa528ce959e487632f4cfd192f8132f71b32df2744b4 2.30kB / 2.30kB                                                                        0.0s
+ => => sha256:aece8493d3972efa43bfd4ee3cdba659c0f787f8f59c82fb3e48c87cbb22a12e 29.54MB / 29.54MB                                                                      0.5s
+ => => sha256:2b7412e6465c3c7fc5bb21d3e6f1917c167358449fecac8176c6e496e5c1f05f 1.13kB / 1.13kB                                                                        0.0s
+ => => extracting sha256:aece8493d3972efa43bfd4ee3cdba659c0f787f8f59c82fb3e48c87cbb22a12e                                                                             1.7s
+ => [2/3] RUN apt-get update                                                                                                                                          4.9s
+ => [3/3] RUN apt-get install -y nginx                                                                                                                                7.9s
+ => exporting to image                                                                                                                                                0.7s 
+ => => exporting layers                                                                                                                                               0.7s 
+ => => writing image sha256:4a8ba3ac048adb571f512eaa47d9faaf08bf741390c99402e9f8d39763d234c6                                                                          0.0s 
+ => => naming to docker.io/challanandu/nginx11                                                                                                                        0.0s 
+root@ip-172-31-36-91:~# docker images                                                                                                                                      
+REPOSITORY            TAG       IMAGE ID       CREATED          SIZE                                                                                                       
+challanandu/nginx11   latest    4a8ba3ac048a   37 seconds ago   179MB
+nginx                 latest    c20060033e06   8 days ago       187MB
+root@ip-172-31-36-91:~# 
+
+
+root@ip-172-31-36-91:~# docker push challanandu/nginx11
+Using default tag: latest
+The push refers to repository [docker.io/challanandu/nginx11]
+feae167e8b8b: Pushed 
+c20f6f146bff: Pushed 
+256d88da4185: Mounted from library/ubuntu 
+latest: digest: sha256:c91aa77d1326796bd90d4abc28777cc5c856d81009359546b3a18d402d9ca456 size: 953
+root@ip-172-31-36-91:~# 
+
+
+Public registry generally setup on docker Hub.
+
+================================================================================================================================================================================
+
+Private registry can also be created on docker hub, but free account we using they only giving only one private registry
+If we want to create more private registry images we have to pay and use it.
+
+
+How we setup and upload into the private registry?
+Ans: -- ECR is a service of aws but it mainly works like registry of uploading there docker images.
+		ECR is the basic registry which docker images can be uploaded
+		
+		Servers are called as EC2 instance, Now EC2 instance server want to access another service of AWS is called as ECR
+			Images are now present in EC2 instance, Now EC2 wants to push the images into ECR
+				For EC2 instance to have access on the ECR, we use IAM (Identity access management)It is one of the aws service.
+					IAM is like user administration, giving permissions to EC2 instance to access on ECR, so that it can do upload operations and download operations.
+					
+					
+		In AWS search for IAM and select the Roles option 
+		Click on create Role
+		Select the AWS Service option
+		IN service or use case option select EC2 and click on Next
+		In next page select administartor access and click on Next
+		Now give any rolename and click on create.
+		
+		Now in AWS search for ECR and click on create repository
+		select the "private" and fill the repository name(which means which	name image wants to be uploaded)created with mynginx
+		
+
+
+root@ip-172-31-19-75:~# docker run --name r1 -d -p 5000:5000 registry 
+Unable to find image 'registry:latest' locally
+latest: Pulling from library/registry
+73baa7ef167e: Pull complete 
+d49090716641: Pull complete 
+bc8f2b8a18ff: Pull complete 
+9d41963883ad: Pull complete 
+ad02dd2076d6: Pull complete 
+Digest: sha256:79b29591e1601a73f03fcd413e655b72b9abfae5a23f1ad2e883d4942fbb4351
+Status: Downloaded newer image for registry:latest
+3b80eb854a5e27575099689271afb4a012dfe8e14ae97125400e6badf43924f3
+root@ip-172-31-19-75:~# 
+root@ip-172-31-19-75:~# docker pull httpd
+Using default tag: latest
+latest: Pulling from library/httpd
+2cc3ae149d28: Pull complete 
+840d8df643b2: Pull complete 
+4f4fb700ef54: Pull complete 
+9d1465828338: Pull complete 
+4a16a983b278: Pull complete 
+9129890c4c50: Pull complete 
+Digest: sha256:10182d88d7fbc5161ae0f6f758cba7adc56d4aae2dc950e51d72c0cf68967cea
+Status: Downloaded newer image for httpd:latest
+docker.io/library/httpd:latest
+root@ip-172-31-19-75:~# 
+root@ip-172-31-19-75:~# 
+root@ip-172-31-19-75:~# aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 975049901364.dkr.ecr.ap-southeast-2.amazonaws.com    ========> copied from ECR created registry steps
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+root@ip-172-31-19-75:~# docker build -t httpd .
+[+] Building 23.0s (8/8) FINISHED                                                                                                                  docker:default
+ => [internal] load build definition from dockerfile                                                                                                         0.0s
+ => => transferring dockerfile: 160B                                                                                                                         0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:latest                                                                                             2.2s
+ => [auth] library/ubuntu:pull token for registry-1.docker.io                                                                                                0.0s
+ => [internal] load .dockerignore                                                                                                                            0.0s
+ => => transferring context: 2B                                                                                                                              0.0s
+ => [1/3] FROM docker.io/library/ubuntu:latest@sha256:2e863c44b718727c860746568e1d54afd13b2fa71b160f5cd9058fc436217b30                                       2.9s
+ => => resolve docker.io/library/ubuntu:latest@sha256:2e863c44b718727c860746568e1d54afd13b2fa71b160f5cd9058fc436217b30                                       0.0s
+ => => sha256:9c704ecd0c694c4cbdd85e589ac8d1fc3fd8f890b7f3731769a5b169eb495809 29.71MB / 29.71MB                                                             0.9s
+ => => sha256:2e863c44b718727c860746568e1d54afd13b2fa71b160f5cd9058fc436217b30 1.13kB / 1.13kB                                                               0.0s
+ => => sha256:c920ba4cfca05503764b785c16b76d43c83a6df8d1ab107e7e6610000d94315c 424B / 424B                                                                   0.0s
+ => => sha256:35a88802559dd2077e584394471ddaa1a2c5bfd16893b829ea57619301eb3908 2.30kB / 2.30kB                                                               0.0s
+ => => extracting sha256:9c704ecd0c694c4cbdd85e589ac8d1fc3fd8f890b7f3731769a5b169eb495809                                                                    1.7s
+ => [2/3] RUN apt-get update                                                                                                                                 9.2s
+ => [3/3] RUN apt-get install -y nginx                                                                                                                       8.1s 
+ => exporting to image                                                                                                                                       0.4s 
+ => => exporting layers                                                                                                                                      0.4s 
+ => => writing image sha256:099608b1f37bd41d7dfc3da9da6860b3d916937c6c2fa667d6bc841f4b305881                                                                 0.0s 
+ => => naming to docker.io/library/httpd                                                                                                                     0.0s 
+root@ip-172-31-19-75:~# docker tag httpd:latest 975049901364.dkr.ecr.ap-southeast-2.amazonaws.com/httpd:latest                                                    
+root@ip-172-31-19-75:~# docker push 975049901364.dkr.ecr.ap-southeast-2.amazonaws.com/httpd:latest                                                                
+The push refers to repository [975049901364.dkr.ecr.ap-southeast-2.amazonaws.com/httpd]
+7e77aa0a2b81: Pushed 
+9afa720cfae1: Pushed 
+a30a5965a4f7: Pushed 
+latest: digest: sha256:8e17ad07e70c6481681d995e0bfabad2bce7e72993d081b5be8111836ff234cd size: 952
+root@ip-172-31-19-75:~# 
+root@ip-172-31-19-75:~# vim dockerfile
+root@ip-172-31-19-75:~# docker images
+REPOSITORY                                                TAG       IMAGE ID       CREATED              SIZE
+975049901364.dkr.ecr.ap-southeast-2.amazonaws.com/httpd   latest    099608b1f37b   About a minute ago   124MB
+httpd                                                     latest    099608b1f37b   About a minute ago   124MB
+httpd                                                     <none>    bfe6700e6779   2 months ago         147MB
+registry                                                  latest    6a3edb1d5eb6   8 months ago         25.4MB
+root@ip-172-31-19-75:~# 
+		
+	Now How we upload images in the mynginx?
+		Now select the created mynginx repository
+		In above you can see "view push commands"  
+		Copy the 1st command example: --- aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 720886133311.dkr.ecr.us-east-1.amazonaws.com
+		It will be fail because we have to install awscli software
+		command is apt install awscli
+		Now give above command ----   aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 720886133311.dkr.ecr.us-east-1.amazonaws.com
+		Now copy the 2nd command ---   docker build -t mynginx .
+		Now copy the 3rd command ----  docker tag mynginx:latest 720886133311.dkr.ecr.us-east-1.amazonaws.com/mynginx:latest
+		Now copy the 4th command ----  docker push 720886133311.dkr.ecr.us-east-1.amazonaws.com/mynginx:latest        ----------This command will push our image into private registry.
+		
+	
+=======================================================================================================================================================================================		
+	
+How to create private repository ?
+	
+Creating private repositry steps
+goto hub.docker.com 
+click on create repository
+Repository name(image_name) : nginx12
+select the visibility as private
+click on create
+
+after this next process
+
+root@ip-172-31-36-91:~# docker build -t challanandu/nginx12 .
+[+] Building 0.3s (8/8) FINISHED                                                                                                                            docker:default
+ => [internal] load build definition from dockerfile                                                                                                                  0.0s
+ => => transferring dockerfile: 159B                                                                                                                                  0.0s
+ => [internal] load .dockerignore                                                                                                                                     0.0s
+ => => transferring context: 2B                                                                                                                                       0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:latest                                                                                                      0.2s
+ => [auth] library/ubuntu:pull token for registry-1.docker.io                                                                                                         0.0s
+ => [1/3] FROM docker.io/library/ubuntu@sha256:2b7412e6465c3c7fc5bb21d3e6f1917c167358449fecac8176c6e496e5c1f05f                                                       0.0s
+ => CACHED [2/3] RUN apt-get update                                                                                                                                   0.0s
+ => CACHED [3/3] RUN apt-get install -y nginx                                                                                                                         0.0s
+ => exporting to image                                                                                                                                                0.0s
+ => => exporting layers                                                                                                                                               0.0s
+ => => writing image sha256:4a8ba3ac048adb571f512eaa47d9faaf08bf741390c99402e9f8d39763d234c6                                                                          0.0s
+ => => naming to docker.io/challanandu/nginx12                                                                                                                        0.0s
+root@ip-172-31-36-91:~# docker images
+REPOSITORY            TAG       IMAGE ID       CREATED          SIZE
+challanandu/nginx11   latest    4a8ba3ac048a   25 minutes ago   179MB
+challanandu/nginx12   latest    4a8ba3ac048a   25 minutes ago   179MB
+nginx                 latest    c20060033e06   8 days ago       187MB
+root@ip-172-31-36-91:~# 
+root@ip-172-31-36-91:~# docker push challanandu/nginx12
+Using default tag: latest
+The push refers to repository [docker.io/challanandu/nginx12]
+feae167e8b8b: Mounted from challanandu/nginx11 
+c20f6f146bff: Mounted from challanandu/nginx11 
+256d88da4185: Mounted from challanandu/nginx11 
+latest: digest: sha256:c91aa77d1326796bd90d4abc28777cc5c856d81009359546b3a18d402d9ca456 size: 953
+root@ip-172-31-36-91:~# 
+
+
+
+=============================================================================================================================================================================
+
+image : ----  Image is the combination of binaries and libraries
+			  Every image is the combination of multiple layers
+			 
+
+																	  docker compose 
+															      ========================
+
+Dockerfile--------->DockerImage--------------->DockerCompose
+
+vim dockerfile
+
+FROM jenkins/jenkins
+MAINTAINER Nandu
+
+USER root
+RUN apt-get update
+RUN apt-get install -y git maven
+
+save & quit
+
+Now create image command "docker build -t myjenkins ."
+
+we create docker compose file the command is "vim docker-compose.yml"
+How we create containers by using docker compose?
+command "docker-compose.yml"
+
+
+---
+version: '3.8'
+services:
+  myjenkins:
+    image: myjenkins
+	ports:
+	  - 5050:8080
+	  
+  mytomcat:
+    image: tomee
+	ports:
+	  - 6060:8080
+	  
+...
+
+save & quit
+
+Dockerfile--------->DockerImage--------------->DockerCompose
+
+Without dockerimage we can do directly from Dockerfile------------->DockerCompose
+
+---
+version: '3.8'
+services:
+  myjenkins:
+    build: .
+	ports:
+	  - 5050:8080
+	container_name: myjenkins
+	
+  mytomcat:
+    image: tomee
+	ports:
+	  - 6060:8080
+	 container_name: mytomcat
+	 
+...
+
+save & quit
+docker compose up -d
+
+
+command "docker compose up -d
+command "docker container ls
+
+docker networks
+=====================
+
+vim docker-compose.yml
+
+---
+version: '3.8'
+services:
+  mydb:
+    image: postgres
+	environment:
+	  POSTGRES_PASSWORD: Nandu
+	  POSTGRES_USER: myuser
+	  POSTGRES_DB: mydb
+	  
+  myadminer:
+    image: adminer
+	ports:
+	  - 8888:8080
+	  
+...
+
+save & quit
+
+docker compose up -d
+
+docker compose will create its own custom bridge network on which the containers run. the name of the network is current directory name_default Eg:-- root_default, tmp_default 
+docker compose up --- In background its creating its own custom bridge network and all the containers are running on customized bridge network 
+
+
+vim docker-compose.xml
+
+---
+version: '3.8'
+services: 
+
+
+docker compose down ---- (it will delete all the docker compose images and containers and also networks it is created.)
+
+
+I want docker compose rather than creating its own network, I want docker compose use the netwok which i have created?
+
+steps:
+
+root@ip-172-31-36-91:~# vi docker-compose.yml
+
+---
+version: '3.8'
+services:
+  mydb:
+    image: postgres
+	environment:
+	  POSTGRES_PASSWORD: Nandu
+	  POSTGRES_USER: myuser
+	  POSTGRES_DB: mydb
+	  
+  myadminer:
+    image: adminer
+	ports:
+	  - 8888:8080
+
+networks:
+  default:
+    external:
+      name: nandu
+	  
+...
+
+
+
+In next step we creating our own network with name of "nandu" and ip address range also.
+
+root@ip-172-31-36-91:~# docker network create --driver bridge --subnet 10.0.0.0/28 nandu
+bc981881b2dd365c1ae920c20a621b8e179043a74c05c9997cfeb1780e5e4c57
+
+root@ip-172-31-36-91:~# docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+76fa1bf0215d   bridge    bridge    local
+abec6165756a   host      host      local
+bc981881b2dd   nandu     bridge    local
+060c638c027e   none      null      local
+
+In next step we doing "docker compose up -d"  
+
+root@ip-172-31-36-91:~# docker compose up -d
+WARN[0000] network default: network.external.name is deprecated. Please set network.name with external: true 
+[+] Running 2/2
+ ✔ Container root-mydb-1       Started                                                                                                                               0.1s 
+ ✔ Container root-myadminer-1  Started                                                                                                                               0.1s 
+
+
+root@ip-172-31-36-91:~# docker container ls
+CONTAINER ID   IMAGE      COMMAND                  CREATED          STATUS          PORTS                                       NAMES
+444b0bab53cb   postgres   "docker-entrypoint.s…"   25 seconds ago   Up 23 seconds   5432/tcp                                    root-mydb-1
+ef6a1292be26   adminer    "entrypoint.sh php -…"   25 seconds ago   Up 23 seconds   0.0.0.0:8888->8080/tcp, :::8888->8080/tcp   root-myadminer-1
+
+
+root@ip-172-31-36-91:~# docker inspect 444b0bab53cb
+[
+    {
+        "Id": "444b0bab53cbe5c1405680d52930ba53253fab8405e6e4717017b0b88f28f206",
+        "Created": "2023-11-12T05:53:51.815398121Z",
+        "Path": "docker-entrypoint.sh",
+        "Args": [
+            "postgres"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 1552,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2023-11-12T05:53:52.987300787Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:fbd1be2cbb1f55a77e9e4124c36f4f7e7d9370de26d4325688cc953008984c81",
+        "ResolvConfPath": "/var/lib/docker/containers/444b0bab53cbe5c1405680d52930ba53253fab8405e6e4717017b0b88f28f206/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/444b0bab53cbe5c1405680d52930ba53253fab8405e6e4717017b0b88f28f206/hostname",
+        "HostsPath": "/var/lib/docker/containers/444b0bab53cbe5c1405680d52930ba53253fab8405e6e4717017b0b88f28f206/hosts",
+        "LogPath": "/var/lib/docker/containers/444b0bab53cbe5c1405680d52930ba53253fab8405e6e4717017b0b88f28f206/444b0bab53cbe5c1405680d52930ba53253fab8405e6e4717017b0b88f28f206-json.log",
+        "Name": "/root-mydb-1",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "bc981881b2dd365c1ae920c20a621b8e179043a74c05c9997cfeb1780e5e4c57",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/3b84b326f90ea7e8503154a9e2164101ff97a12dc2de9c1349beb7dbd6f8729e-init/diff:/var/lib/docker/overlay2/bb2f843446b37a1d670a6974d69162188910dda7dd8d337618d8473f0f5ec890/diff:/var/lib/docker/overlay2/30905b1c532dd23eec98e624de827272b1ea9365ab52a6320b1c1e4e5adcda94/diff:/var/lib/docker/overlay2/6bad755952724acb2ca2b05d2e2c9e31092145030c6d2766015cb7f8103d9c80/diff:/var/lib/docker/overlay2/a4272cea93aab2336ebd44b3d48352d51cf6b3acc16b0a31bd5a10548cea95f4/diff:/var/lib/docker/overlay2/79331738cd92449ec440b9d2f993dbd50430450e51a4e8ccf38f8e28b74ebc48/diff:/var/lib/docker/overlay2/43759c84793761a17e998b342481fa9a33cb31fae3e6cccbccf03aa9c9c23e5d/diff:/var/lib/docker/overlay2/e52cbadaeaa8b6cc604ba8bc47c41bd3a856a1471256289f74d79a413038644e/diff:/var/lib/docker/overlay2/63704a3d18933a4b76f729b969112ba28f54f828756e50a4e2817024c916dd62/diff:/var/lib/docker/overlay2/972cb7c5d26794f4c6e096b14bc883909c9382aa9c0822d9b9486f365939fa72/diff:/var/lib/docker/overlay2/65adb2552f0d49c29a1748d6408dbed9ed79c77a3b3e46444cb4dd2f5681ebdd/diff:/var/lib/docker/overlay2/69ef2199f1e17777bf90625516b7b31ce199001dc1b4265c78eec4a467c3b7f5/diff:/var/lib/docker/overlay2/bd09cf0156d29078c99b6b8914247ccab95ae603da76e47caa61eac8031d5992/diff:/var/lib/docker/overlay2/685e6eba31ce975ed24035d87eaa39b5b479343185edead47c257d5b1262ebe3/diff",
+                "MergedDir": "/var/lib/docker/overlay2/3b84b326f90ea7e8503154a9e2164101ff97a12dc2de9c1349beb7dbd6f8729e/merged",
+                "UpperDir": "/var/lib/docker/overlay2/3b84b326f90ea7e8503154a9e2164101ff97a12dc2de9c1349beb7dbd6f8729e/diff",
+                "WorkDir": "/var/lib/docker/overlay2/3b84b326f90ea7e8503154a9e2164101ff97a12dc2de9c1349beb7dbd6f8729e/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "4d492170906f7b485d2a3331201d09eb2c23d5684b1be01c2751c2c05fb926eb",
+                "Source": "/var/lib/docker/volumes/4d492170906f7b485d2a3331201d09eb2c23d5684b1be01c2751c2c05fb926eb/_data",
+                "Destination": "/var/lib/postgresql/data",
+                "Driver": "local",
+                "Mode": "",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "444b0bab53cb",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "5432/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "POSTGRES_PASSWORD=Nandu",
+                "POSTGRES_user=myuser",
+                "POSTGRES_DB=mydb",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/16/bin",
+                "GOSU_VERSION=1.16",
+                "LANG=en_US.utf8",
+                "PG_MAJOR=16",
+                "PG_VERSION=16.0-1.pgdg120+1",
+                "PGDATA=/var/lib/postgresql/data"
+            ],
+            "Cmd": [
+                "postgres"
+            ],
+            "Image": "postgres",
+            "Volumes": {
+                "/var/lib/postgresql/data": {}
+            },
+            "WorkingDir": "",
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "com.docker.compose.config-hash": "3662b38ab020e378268cf8c86bc65277cdcaee2dfcda7cc10da0160d06107f3b",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:fbd1be2cbb1f55a77e9e4124c36f4f7e7d9370de26d4325688cc953008984c81",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "root",
+                "com.docker.compose.project.config_files": "/root/docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/root",
+                "com.docker.compose.service": "mydb",
+                "com.docker.compose.version": "2.21.0"
+            },
+            "StopSignal": "SIGINT"
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "508eaff89bd01e358a211f328eb3bb8dbd7e7faf6272a613fcee3444c4c6b96c",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {
+                "5432/tcp": null
+            },
+            "SandboxKey": "/var/run/docker/netns/508eaff89bd0",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "nandu": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "root-mydb-1",
+                        "mydb",
+                        "444b0bab53cb"
+                    ],
+                    "NetworkID": "bc981881b2dd365c1ae920c20a621b8e179043a74c05c9997cfeb1780e5e4c57",
+                    "EndpointID": "ebe15edaba77f1192538605c8a860287b85bd23d41795021569c91ab22e94870",
+                    "Gateway": "10.0.0.1",
+                    "IPAddress": "10.0.0.3",
+                    "IPPrefixLen": 28,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "02:42:0a:00:00:03",
+                    "DriverOpts": null
+                }
+            }
+        }
+    }
+]
+root@ip-172-31-36-91:~# 
+
+
+======================================================================================================================================================================================
+
+docker compose topic
+
+I want to create one jenkins container and two tomcat containers(In tomcat one container as QA server and another container as prod server). But jenkins server should run a network called as "abc"
+QA,Prod server should run a network on "xyz". I am not going to create those "abc"&"xyz" networks, docker should create automatically. How it can be done?
+
+vi docker-compose.yml
+
+version: '3.8'
+services:
+  myjenkins:
+    image: jenkins/jenkins
+    ports:
+      - 5050:8080
+    networks:
+      - abc
+
+  qaserver:
+    image: tomcat
+    ports:
+      - 6060:8080
+    networks:
+      - xyz
+
+  prodserver:
+    image: tomcat
+    ports:
+      - 7070:8080
+    networks:
+      - xyz
+
+networks:
+  abc: {}
+  xyz: {}
+    
+...
+
+save & quit
+
+give docker compose up -d
+by giving docker compose down (It will delete the containers and networks also because those networks are created by docker compose)
+
+================================================================================================================================================================================
+
+docker volumes :----
+======================
+
+How do we handle volumes?
+volume is basically backup machanism of docker. Its a way to preserve the data, even after the container is deleted.
+
+Now am going to create mysql and wordpress container and i want to put a backup point for both this containers which means the wordpress container is deleted the actual data of the wordpress
+should be preserved somewhere. same to mysql data also preserver.
+
+root@ip-172-31-36-91:~# vi docker-compose.yml
+
+---
+version: '3.8'
+services:
+  mydb:
+    image: mysql:5
+	environment:
+	  MYSQL_ROOT_PASSWORD: Nandu
+	volumes:
+      - db:/var/lib/mysql
+
+  mywordpress:
+    image: wordpress
+    ports:
+      - 8888:80
+    volumes:
+      - wordpress:/var/lib/www/html
+
+volumes:
+  db:
+  wordpress:
+
+...  
+
+save & quit
+
+root@ip-172-31-36-91:~# docker compose up -d
+[+] Running 34/23
+ ✔ mywordpress 21 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]      0B/0B      Pulled                                                                                             32.0s 
+ ✔ mydb 11 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]      0B/0B      Pulled                                                                                                              26.0s                                                                                                                            
+[+] Running 5/5
+ ✔ Network root_default          Created                                                                                                                             0.2s 
+ ✔ Volume "root_wordpress"       Created                                                                                                                             0.0s 
+ ✔ Volume "root_db"              Created                                                                                                                             0.0s 
+ ✔ Container root-mywordpress-1  Started                                                                                                                             0.5s 
+ ✔ Container root-mydb-1         Started                                                                                                                             0.5s 
+root@ip-172-31-36-91:~# 
+
+root@ip-172-31-36-91:~# docker volume ls
+DRIVER    VOLUME NAME
+local     658990b0660c7ccdb9c73512bc0bf0d09ad7503b0493889dbfcf45869b7b3b8b
+local     root_db
+local     root_wordpress
+
+
+root@ip-172-31-36-91:~# docker compose down
+[+] Running 3/3
+ ✔ Container root-mywordpress-1  Removed                                                                                                                             1.7s 
+ ✔ Container root-mydb-1         Removed                                                                                                                             2.0s 
+ ✔ Network root_default          Removed                                                                                                                             0.1s
+
+After giving "docker compose down" the containers and networks will be deleted, but volumes will be preserved.
+
+root@ip-172-31-36-91:~# docker volume ls
+DRIVER    VOLUME NAME
+local     658990b0660c7ccdb9c73512bc0bf0d09ad7503b0493889dbfcf45869b7b3b8b
+local     root_db
+local     root_wordpress
+root@ip-172-31-36-91:~# 
+
+=====================================================================================================================================================================================
+
+                                                        Docker swarm
+											======================================
+											
+Docker swarm and kubernates are all this called as container orchestration tools.
+
+Container orchestration ----- 1. load balancing	---- the capability it  stand more userload.
+							  2. scaling       ------- whenever they want increaing the count of there servers and after their work is done their work decrease to normal limit of servers.
+							  3. rolling update operations ---- 
+							  4. High avalibility  ---- 
+							  
+That is ebility to handle containers run in a production environment
+
+Installation of Docker swarm : ----
+====================================
+Docker swarm we have to create on multiple servers.
+we will initilize Docker swarm in one machine that machine called as "Manager".
+The remaining machines we configure with docker swarm we call them as "workers".
+The "Manager" & "workers" the whole setup we call it as Docker swarm cluster.
+Each of the machines are present in the cluster we call them as "node". Node is one machine which is present the docker swarm cluster
+A cluster is the combination of multiple nodes. This nodes are some of them are manager machine and some of them or worker machine.
+
+We trigger(control) all docker swarm commands by using manager.
+
+Creating the docker swarm in aws?
+
+How we convert the machine as a manager?
+command - docker swarm init  ---------------(This command will create docker swarm) 
+root@manager:~#  Here the manager machine automatically made as manager
+
+
+root@Manager:~# docker swarm init
+Swarm initialized: current node (77tdxqdu6ikvhdybng4ehyda6) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-1a9wo1tkze4wb33x96m8kcgqfbtjealaok9hj3zqtpbw6abiec-8o9xrnrlh4a5t2dnnwq6t0czk 172.31.36.91:2377
+
+To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+docker swarm token is one time activity 
+
+To join removed worker under the manager
+command -----  "docker swarm join-token worker".
+
+The same token will appear 
+
+root@Manager:~# 
+
+  Next step is docker swarm has to join in manager then only manager can access those worker1&worker2
+  
+  In above we can see docker swarm join copy that command and apply in worker1 and worker2 those two workers will be managed by manager.
+  This is the Example command :---   docker swarm join --token SWMTKN-1-1a9wo1tkze4wb33x96m8kcgqfbtjealaok9hj3zqtpbw6abiec-8o9xrnrlh4a5t2dnnwq6t0czk 172.31.36.91:2377
+  
+  worker 1:---
+  
+ubuntu@worker1:~$ sudo su -
+root@worker1:~# docker swarm join --token SWMTKN-1-1a9wo1tkze4wb33x96m8kcgqfbtjealaok9hj3zqtpbw6abiec-8o9xrnrlh4a5t2dnnwq6t0czk 172.31.36.91:2377
+This node joined a swarm as a worker.
+root@worker1:~# 
+
+  worker 2: ---
+  
+ubuntu@worker2:~$ sudo su -
+root@worker2:~# docker swarm join --token SWMTKN-1-1a9wo1tkze4wb33x96m8kcgqfbtjealaok9hj3zqtpbw6abiec-8o9xrnrlh4a5t2dnnwq6t0czk 172.31.36.91:2377
+This node joined a swarm as a worker.
+root@worker2:~# 
+
+For checking all the list of nodes in "manager server" command is ---- "docker node ls"
+
+
+How we create service in the docker swarm?
+Service :-- service is the combination of multiple containers(replicas) we called them as services.
+command :---- docker service create --name webserver -p 8080:80 --replicas 5 nginx    (Creating 5 replicas)
+
+root@Manager:~# docker service create --name webserver -p 8080:80 --replicas 5 nginx
+0hqg24hjucxargspl2cqc797o
+overall progress: 5 out of 5 tasks 
+1/5: running   [==================================================>] 
+2/5: running   [==================================================>] 
+3/5: running   [==================================================>] 
+4/5: running   [==================================================>] 
+5/5: running   [==================================================>] 
+verify: Service converged 
+root@Manager:~# 
+
+How we check the list of services for that command is ------ "docker service ls".
+
+root@Manager:~# docker service ls
+ID             NAME        MODE         REPLICAS   IMAGE          PORTS
+0hqg24hjucxa   webserver   replicated   5/5        nginx:latest   *:8080->80/tcp
+root@Manager:~# 
+
+How we check the containers running in different nodes?
+command -- "docker service ps webserver
+
+root@Manager:~# docker service ps webserver
+ID             NAME          IMAGE          NODE      DESIRED STATE   CURRENT STATE           ERROR     PORTS
+r2hrtz6l9q5c   webserver.1   nginx:latest   worker2   Running         Running 6 minutes ago             
+518xhj5lwkdq   webserver.2   nginx:latest   Manager   Running         Running 6 minutes ago             
+xd0pbpadbgzb   webserver.3   nginx:latest   worker1   Running         Running 6 minutes ago             
+fs6yge4xdgp5   webserver.4   nginx:latest   worker2   Running         Running 6 minutes ago             
+w3737jy2eldk   webserver.5   nginx:latest   worker1   Running         Running 6 minutes ago             
+root@Manager:~# 
+
+Note: ----
+
+In the Docker swarm background the software  "Quorum".
+Quorum is using the algarithum of RAFT algorithum via RAFT algorithum the Quorum checks how many machines are there in the cluster, what is hardware present on those machines
+Quorum will decide and divide the replicas to Manager,worker1,worker2 it is completely Quorum part automatically it desides and divide it based on hardware of those machines.
+Eacb replica can handle 100 users only, am created 5 replicas so total 500 users can access the nginx.
+This is called as load balancing.
+
+Note: ----
+
+User can access any website by using IP address
+For Ip addresses we assigning Domain name like nginx.com,google.com,facebook.com etc..
+Once we search nginx.com in browser the request goes to DNS server that DNS server convert that name into IP address.
+The nginx server hosted on some number of servers, This DNS server sends our request to nginx server.
+when we search with public Ip of that manager,worker1,worker2 the nginx will respond.
+
+Load Balancing:---
+==============================
+
+Now am trying to create mysql with 3 replicas
+root@Manager:~# 
+root@Manager:~# docker service create --name mydb --replicas 3 -e MYSQL_ROOT_PASSWORD=Nandu@12345 mysql
+s26p801alpty6jorpa2k9yixs
+overall progress: 3 out of 3 tasks 
+1/3: running   [==================================================>] 
+2/3: running   [==================================================>] 
+3/3: running   [==================================================>] 
+verify: Service converged 
+root@Manager:~# 
+root@Manager:~# docker service ls
+ID             NAME        MODE         REPLICAS   IMAGE          PORTS
+s26p801alpty   mydb        replicated   3/3        mysql:latest   
+0hqg24hjucxa   webserver   replicated   5/5        nginx:latest   *:8080->80/tcp
+root@Manager:~# 
+root@Manager:~# docker service ps mydb
+ID             NAME      IMAGE          NODE      DESIRED STATE   CURRENT STATE           ERROR     PORTS
+oc0xxfbhafvn   mydb.1    mysql:latest   worker1   Running         Running 2 minutes ago             
+p01sjd8mut3g   mydb.2    mysql:latest   worker2   Running         Running 2 minutes ago             
+8xsc0k29tyhw   mydb.3    mysql:latest   Manager   Running         Running 2 minutes ago             
+root@Manager:~#
+
+Note: --- The process is called as "load balancing".
+The ability to run a perticular container with multiple replicas we called it as load balancing.
+
+
+How we delete the services?
+Command :--- "docker service  rm filename" Example: -- "docker service rm mydb webserver
+From manager,worker1,worker2 all the containers will be deleted.
+
+root@Manager:~# docker service rm mydb webserver
+mydb
+webserver
+root@Manager:~# 
+root@Manager:~# docker service ls
+ID        NAME      MODE      REPLICAS   IMAGE     PORTS
+root@Manager:~# 
+
+==========================================================================================================================================================================
+
+Scalling: ----
+================
+
+depending on required we should able to upgrade smaller count to higher count(increase the capability of application).
+
+Creating httpd container
+with that creating 4 replicas
+
+root@Manager:~# docker service create --name myhttpd --replicas 4 -p 8888:80 httpd
+k8cz9a781gwi02ncxbz8ic141
+overall progress: 4 out of 4 tasks 
+1/4: running   [==================================================>] 
+2/4: running   [==================================================>] 
+3/4: running   [==================================================>] 
+4/4: running   [==================================================>] 
+verify: Service converged 
+root@Manager:~# 
+root@Manager:~# 
+root@Manager:~# docker service ls
+ID             NAME      MODE         REPLICAS   IMAGE          PORTS
+k8cz9a781gwi   myhttpd   replicated   4/4        httpd:latest   *:8888->80/tcp
+root@Manager:~# 
+
+
+Increasing the replicas: ---
+===============================
+
+Now i want add another 4 replicas into it command -- "docker service scale myhttpd=8"
+
+root@Manager:~# docker service scale myhttpd=8
+myhttpd scaled to 8
+overall progress: 8 out of 8 tasks 
+1/8: running   [==================================================>] 
+2/8: running   [==================================================>] 
+3/8: running   [==================================================>] 
+4/8: running   [==================================================>] 
+5/8: running   [==================================================>] 
+6/8: running   [==================================================>] 
+7/8: running   [==================================================>] 
+8/8: running   [==================================================>] 
+verify: Service converged 
+root@Manager:~# 
+root@Manager:~# docker service ls
+ID             NAME      MODE         REPLICAS   IMAGE          PORTS
+k8cz9a781gwi   myhttpd   replicated   8/8        httpd:latest   *:8888->80/tcp
+root@Manager:~# docker service ps myhttpd
+ID             NAME        IMAGE          NODE      DESIRED STATE   CURRENT STATE            ERROR     PORTS
+wv3fhe6u5geu   myhttpd.1   httpd:latest   worker1   Running         Running 3 minutes ago              
+wj2071zah36m   myhttpd.2   httpd:latest   Manager   Running         Running 3 minutes ago              
+wnfjsoq2n2hm   myhttpd.3   httpd:latest   worker2   Running         Running 3 minutes ago              
+vb6jeagb981z   myhttpd.4   httpd:latest   worker2   Running         Running 3 minutes ago              
+3ml3rphalalu   myhttpd.5   httpd:latest   worker2   Running         Running 19 seconds ago             
+z04fai837xv6   myhttpd.6   httpd:latest   Manager   Running         Running 19 seconds ago             
+gctccoltt8i4   myhttpd.7   httpd:latest   worker1   Running         Running 19 seconds ago             
+9r92u2pwt3i7   myhttpd.8   httpd:latest   worker1   Running         Running 19 seconds ago             
+root@Manager:~#
+
+Now decreasing the replicas:----
+=======================================
+
+command ---- "docker service scale myhttpd=2"
+
+root@Manager:~# docker service scale myhttpd=2
+myhttpd scaled to 2
+overall progress: 2 out of 2 tasks 
+1/2: running   [==================================================>] 
+2/2: running   [==================================================>] 
+verify: Service converged 
+root@Manager:~# 
+root@Manager:~# docker service ls
+ID             NAME      MODE         REPLICAS   IMAGE          PORTS
+k8cz9a781gwi   myhttpd   replicated   2/2        httpd:latest   *:8888->80/tcp
+root@Manager:~# docker service ps myhttpd
+ID             NAME        IMAGE          NODE      DESIRED STATE   CURRENT STATE           ERROR     PORTS
+wv3fhe6u5geu   myhttpd.1   httpd:latest   worker1   Running         Running 4 minutes ago             
+wj2071zah36m   myhttpd.2   httpd:latest   Manager   Running         Running 4 minutes ago             
+root@Manager:~# 
+
+
+===========================================================This is the process of scalling=======================================================================================
+
+Rolling update operation: -----
+===================================
+It will increase an number of replicas or decrease the number of replicas without any downtime.
+
+Example: ---
+=============
+
+In my containers Manager,worker1,worker2 are running with redis 3rd version 
+Want to increase into 4th version of redis and the servers should not goto downtime(it will be not accessable when it is in downtime).
+For that rolling update operation will come-up
+First it will complete the upgrading version 3 to 4 on Manager, when it come up to running state then it will goto worker1 after completing the worker1 upgrade to version 4.
+Then it moves to worker2 so on....
+
+
+root@Manager:~# docker service create --name myredis --replicas 4 redis:3
+qm1h2gzp14idaybhgxqm0ej3g
+overall progress: 4 out of 4 tasks 
+1/4: running   [==================================================>] 
+2/4: running   [==================================================>] 
+3/4: running   [==================================================>] 
+4/4: running   [==================================================>] 
+verify: Service converged 
+root@Manager:~# 
+root@Manager:~# docker service ls
+ID             NAME      MODE         REPLICAS   IMAGE     PORTS
+qm1h2gzp14id   myredis   replicated   4/4        redis:3   
+root@Manager:~# docker service ps myredis
+ID             NAME        IMAGE     NODE      DESIRED STATE   CURRENT STATE            ERROR     PORTS
+ejsaf5sci59x   myredis.1   redis:3   Manager   Running         Running 26 seconds ago             
+uec7kt6h9g4u   myredis.2   redis:3   worker2   Running         Running 26 seconds ago             
+a2bzbv4ylbdd   myredis.3   redis:3   worker2   Running         Running 26 seconds ago             
+2vaxicoy7zz6   myredis.4   redis:3   worker1   Running         Running 26 seconds ago             
+root@Manager:~# 
+
+
+root@Manager:~# docker service update --image redis:4 myredis
+myredis
+overall progress: 0 out of 4 tasks 
+1/4: preparing [=================================>                 ] 
+2/4:   
+3/4:   
+4/4:   
+service update paused: update paused due to failure or early termination of task 148040r7pmxmjf8kl1iej0fya
+root@Manager:~# 
+root@Manager:~# docker service update --image redis:4 myredis
+myredis
+overall progress: 1 out of 4 tasks 
+1/4: preparing [=================================>                 ] 
+2/4: running   [==================================================>] 
+3/4: preparing [=================================>                 ] 
+4/4:   
+service update paused: update paused due to failure or early termination of task xu66kqqbmmohti394llrln051
+root@Manager:~# docker service update --image redis:4 myredis
+myredis
+overall progress: 3 out of 4 tasks 
+1/4: running   [==================================================>] 
+2/4: running   [==================================================>] 
+3/4: running   [==================================================>] 
+4/4: preparing [=================================>                 ] 
+service update paused: update paused due to failure or early termination of task n5wcs7pf2qp1dy9arnfauvhyn
+root@Manager:~# 
+root@Manager:~# docker service update --image redis:4 myredis
+myredis
+overall progress: 4 out of 4 tasks 
+1/4: running   [==================================================>] 
+2/4: running   [==================================================>] 
+3/4: running   [==================================================>] 
+4/4: running   [==================================================>] 
+verify: Service converged 
+root@Manager:~# 
+root@Manager:~# docker service ls
+ID             NAME      MODE         REPLICAS   IMAGE     PORTS
+qm1h2gzp14id   myredis   replicated   4/4        redis:4   
+
+
+root@Manager:~# docker service ps myredis
+ID             NAME            IMAGE     NODE      DESIRED STATE   CURRENT STATE             ERROR     PORTS
+yp0mumc5nst8   myredis.1       redis:4   Manager   Running         Running 22 seconds ago              
+zlzhemc2454e    \_ myredis.1   redis:3   node1     Shutdown        Shutdown 23 seconds ago             
+poa3pefud5g8   myredis.2       redis:4   node2     Running         Running 31 seconds ago              
+c614761v2gqt    \_ myredis.2   redis:3   node2     Shutdown        Shutdown 36 seconds ago             
+ss6im4julsfu   myredis.3       redis:4   Manager   Running         Running 37 seconds ago              
+8oi3z8fp0jhb    \_ myredis.3   redis:3   Manager   Shutdown        Shutdown 43 seconds ago             
+osollsykjd8r   myredis.4       redis:4   node1     Running         Running 24 seconds ago              
+yaylr5hg3f4s    \_ myredis.4   redis:3   node1     Shutdown        Shutdown 29 seconds ago             
+root@Manager:~# 
+
+
+Here it showing the info of "\_" related info
+
+root@Manager:~# 
+root@Manager:~# docker service ps myredis | grep \_
+zlzhemc2454e    \_ myredis.1   redis:3   node1     Shutdown        Shutdown 6 minutes ago             
+c614761v2gqt    \_ myredis.2   redis:3   node2     Shutdown        Shutdown 6 minutes ago             
+8oi3z8fp0jhb    \_ myredis.3   redis:3   Manager   Shutdown        Shutdown 6 minutes ago             
+yaylr5hg3f4s    \_ myredis.4   redis:3   node1     Shutdown        Shutdown 6 minutes ago             
+root@Manager:~# 
+
+Here it showing the info non related to this symbol "\_" by using -v(reverse) 
+
+root@Manager:~# docker service ps myredis | grep -v \_
+ID             NAME            IMAGE     NODE      DESIRED STATE   CURRENT STATE            ERROR     PORTS
+yp0mumc5nst8   myredis.1       redis:4   Manager   Running         Running 6 minutes ago              
+poa3pefud5g8   myredis.2       redis:4   node2     Running         Running 6 minutes ago              
+ss6im4julsfu   myredis.3       redis:4   Manager   Running         Running 6 minutes ago              
+osollsykjd8r   myredis.4       redis:4   node1     Running         Running 6 minutes ago              
+root@Manager:~# 
+
+
+
+Now we can do rollback the version 4 to 3 by using the bellow command
+
+command ------ "docker service update --rollback myredis"
+               "docker service update --image redis:3 myredis"
+			   
+root@Manager:~# 
+root@Manager:~# docker service ps myredis | grep -v \_
+ID             NAME            IMAGE     NODE      DESIRED STATE   CURRENT STATE                 ERROR     PORTS
+0rzyzzlhcqkq   myredis.1       redis:3   node2     Running         Running 55 seconds ago                  
+ejj8trpcfjfc   myredis.2       redis:3   node2     Running         Running 59 seconds ago                  
+be6ypua92w0r   myredis.3       redis:3   Manager   Running         Running about a minute ago              
+6653m3xcvj2q   myredis.4       redis:3   node1     Running         Running 57 seconds ago                  
+root@Manager:~# 
+
+root@Manager:~# docker service ps myredis | grep \_
+yp0mumc5nst8    \_ myredis.1   redis:4   Manager   Shutdown        Shutdown about a minute ago             
+zlzhemc2454e    \_ myredis.1   redis:3   node1     Shutdown        Shutdown 9 minutes ago                  
+poa3pefud5g8    \_ myredis.2   redis:4   node2     Shutdown        Shutdown about a minute ago             
+c614761v2gqt    \_ myredis.2   redis:3   node2     Shutdown        Shutdown 9 minutes ago                  
+ss6im4julsfu    \_ myredis.3   redis:4   Manager   Shutdown        Shutdown about a minute ago             
+8oi3z8fp0jhb    \_ myredis.3   redis:3   Manager   Shutdown        Shutdown 9 minutes ago                  
+osollsykjd8r    \_ myredis.4   redis:4   node1     Shutdown        Shutdown about a minute ago             
+yaylr5hg3f4s    \_ myredis.4   redis:3   node1     Shutdown        Shutdown 9 minutes ago                  
+root@Manager:~# 
+			   
+			   
++++++++++++++++		   
+		   
+In docker swarm by using manager if we want to remove workers temporarely called it as "Drain"
+Drain it will remove the worker temporarely from the swarm.
+
+command ---- docker node update --availability drain worker1(or)worker2
+
+
+root@Manager:~# docker node update --availability drain worker1
+worker1
+
+root@Manager:~# docker node ls
+ID                            HOSTNAME   STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
+77tdxqdu6ikvhdybng4ehyda6 *   Manager    Ready     Active         Leader           24.0.6
+ofl7uuoh08i5gvqgcudg48fz8     worker1    Ready     Drain                           24.0.7
+kx4hhaauxg8hvrooa3y4qlh1f     worker2    Ready     Active                          24.0.7
+root@Manager:~# 
+
+
+Activate:---
+
+To activate the drain worker(swarm) to rejoin
+
+command  ------  docker node update --availability active worker1
+
+root@Manager:~# docker node update --availability active worker1
+worker1
+root@Manager:~# 
+root@Manager:~# docker node ls
+ID                            HOSTNAME   STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
+77tdxqdu6ikvhdybng4ehyda6 *   Manager    Ready     Active         Leader           24.0.6
+ofl7uuoh08i5gvqgcudg48fz8     worker1    Ready     Active                          24.0.7
+kx4hhaauxg8hvrooa3y4qlh1f     worker2    Ready     Active                          24.0.7
+root@Manager:~# 
+
+*******************************************
+
+This is 2nd process
+
+Here manager is removing worker1 from the swarm, worker1 also he can exit from the swarm
+
+By sitting on worker1 we have to Implement this command.
+
+There is another way to stop the swarm(workers)
+
+We can remove workers from there location only
+Now am in worker1 location and am removeing it.
+
+Command   ------  docker swarm leave
+
+Here manager is removing worker1 from the swarm, worker1 also he can exit from the swarm
+By sitting on worker1 we have to Implement this command.
+
+root@worker1:~# 
+root@worker1:~# docker swarm leave
+Node left the swarm.
+root@worker1:~# 
+
+Now checking the status of docker node ls under "manager".
+root@Manager:~# docker node ls
+ID                            HOSTNAME   STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
+77tdxqdu6ikvhdybng4ehyda6 *   Manager    Ready     Active         Leader           24.0.6
+ofl7uuoh08i5gvqgcudg48fz8     worker1    Down      Active                          24.0.7
+qg9fuuk8ko5zykbgrpl5o5kj5     worker2    Ready     Active                          24.0.7
+root@Manager:~# 
+Fail over sinarios
+
+If we want to rejoin the worker2 under manager
+
+command ---- "docker swarm join-token worker
+copy the token from Manager, back to worker1 and paste the token "docker swarm join --token SWMTKN-1-1a9wo1tkze4wb33x96m8kcgqfbtjealaok9hj3zqtpbw6abiec-8o9xrnrlh4a5t2dnnwq6t0czk 172.31.36.91:2377"
+
+
+root@Manager:~# docker swarm join-token worker        
+To add a worker to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-1a9wo1tkze4wb33x96m8kcgqfbtjealaok9hj3zqtpbw6abiec-8o9xrnrlh4a5t2dnnwq6t0czk 172.31.36.91:2377
+
+root@Manager:~# 
+root@Manager:~# docker node ls
+ID                            HOSTNAME   STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
+77tdxqdu6ikvhdybng4ehyda6 *   Manager    Ready     Active         Leader           24.0.6
+ofl7uuoh08i5gvqgcudg48fz8     worker1    Ready     Active                          24.0.7
+kx4hhaauxg8hvrooa3y4qlh1f     worker2    Down      Active                          24.0.7
+qg9fuuk8ko5zykbgrpl5o5kj5     worker2    Ready     Active                          24.0.7
+root@Manager:~# 
+
+To remove the above worker2 which is on down status
+command  ----- "docker node rm Hostname or ID"
+
+root@Manager:~# docker node rm kx4hhaauxg8hvrooa3y4qlh1f
+kx4hhaauxg8hvrooa3y4qlh1f
+root@Manager:~#
+
+root@Manager:~# docker node ls
+ID                            HOSTNAME   STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
+77tdxqdu6ikvhdybng4ehyda6 *   Manager    Ready     Active         Leader           24.0.6
+ofl7uuoh08i5gvqgcudg48fz8     worker1    Ready     Active                          24.0.7
+qg9fuuk8ko5zykbgrpl5o5kj5     worker2    Ready     Active                          24.0.7
+root@Manager:~# 
+
+Deleted the Down status of worker2
+
+
+
+
+If i want to add a new worker under the manager, we have to use same token we generated in manager
+
+		docker swarm join --token SWMTKN-1-1a9wo1tkze4wb33x96m8kcgqfbtjealaok9hj3zqtpbw6abiec-8o9xrnrlh4a5t2dnnwq6t0czk 172.31.36.91:2377
+		
+In manager give this command the docker token will display
+
+command  ----  docker swarm join-token worker
+
+command ----   docker swarm join-token manager   -----(To add a server as manager)
+
+root@Manager:~# docker swarm join-token worker
+To add a worker to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-1a9wo1tkze4wb33x96m8kcgqfbtjealaok9hj3zqtpbw6abiec-8o9xrnrlh4a5t2dnnwq6t0czk 172.31.36.91:2377
+
+For adding the worker under manager, Goto worker container and give the below command
+
+		docker swarm join --token SWMTKN-1-1a9wo1tkze4wb33x96m8kcgqfbtjealaok9hj3zqtpbw6abiec-8o9xrnrlh4a5t2dnnwq6t0czk 172.31.36.91:2377
+
+
+root@worker1:~# docker swarm join --token SWMTKN-1-1a9wo1tkze4wb33x96m8kcgqfbtjealaok9hj3zqtpbw6abiec-8o9xrnrlh4a5t2dnnwq6t0czk 172.31.36.91:2377
+This node joined a swarm as a worker.
+root@worker1:~# 
+
+We can change worker as manager and manager as worker by using bellow commands
+
+		docker node promote node_name (worker1)  worker1 will be promote as manager
+
+		docker node demote node_name (manager)  manager will be demote as worker
+		
+		 
+		 
+Docker failures and issues related videos are in (Docker 19th and 20th video).
+		 
+====================================================================================================================================================================
+		  
+		  
+		  
+		  
+ High availability:--   maintaining the desired count.
+ ===================
+		 
+	 Example:---
+	 
+			Created httpd with 6 replicas
+			whatever replicas (6)count we give that count will be called by docker swarm as "Desired state".
+			In any point of time the docker swarm will maintain the desired count.
+			
+			If we delete one replica container manually, then the replica count will be 5 and desired state count is 6 (5/6)
+			when Quorum notes that mismatch between replica count and desired count, automatically Quoram will re-create that container.
+			Then the replica count and desired count is matches. (6/6)
+			
+		
+		
+
+root@Manager:~# docker service create --name myhttpd -p 8888:80 --replicas 6 httpd
+hp8k1g8sy7wfptyroqpwdimoq
+overall progress: 6 out of 6 tasks 
+1/6: running   [==================================================>] 
+2/6: running   [==================================================>] 
+3/6: running   [==================================================>] 
+4/6: running   [==================================================>] 
+5/6: running   [==================================================>] 
+6/6: running   [==================================================>] 
+verify: Service hp8k1g8sy7wfptyroqpwdimoq converged 
+root@Manager:~# docker service ls
+ID             NAME      MODE         REPLICAS   IMAGE          PORTS
+hp8k1g8sy7wf   myhttpd   replicated   6/6        httpd:latest   *:8888->80/tcp
+root@Manager:~# docker service ps myhttpd
+ID             NAME        IMAGE          NODE      DESIRED STATE   CURRENT STATE            ERROR     PORTS
+gg9gk0fqijhc   myhttpd.1   httpd:latest   Manager   Running         Running 20 seconds ago             
+mpzbo7obc2lq   myhttpd.2   httpd:latest   node1     Running         Running 20 seconds ago             
+mp8r7qba3we9   myhttpd.3   httpd:latest   node2     Running         Running 20 seconds ago             
+uo86t68elcxj   myhttpd.4   httpd:latest   Manager   Running         Running 20 seconds ago             
+cd587c3ggvea   myhttpd.5   httpd:latest   node1     Running         Running 20 seconds ago             
+m8jr13har4tv   myhttpd.6   httpd:latest   node2     Running         Running 20 seconds ago             
+root@Manager:~# 
+root@Manager:~# docker container ls
+CONTAINER ID   IMAGE          COMMAND              CREATED          STATUS          PORTS     NAMES
+dd8452b9e592   httpd:latest   "httpd-foreground"   56 seconds ago   Up 54 seconds   80/tcp    myhttpd.4.uo86t68elcxj0f3hsdxoco8s7
+ac1d2014d102   httpd:latest   "httpd-foreground"   56 seconds ago   Up 54 seconds   80/tcp    myhttpd.1.gg9gk0fqijhcfai6covb2nn55
+root@Manager:~# 
+root@Manager:~# docker service ls
+ID             NAME      MODE         REPLICAS   IMAGE          PORTS
+hp8k1g8sy7wf   myhttpd   replicated   6/6        httpd:latest   *:8888->80/tcp
+root@Manager:~# docker rm -f dd8452b9e592
+dd8452b9e592
+root@Manager:~# docker service ls
+ID             NAME      MODE         REPLICAS   IMAGE          PORTS
+hp8k1g8sy7wf   myhttpd   replicated   6/6        httpd:latest   *:8888->80/tcp
+root@Manager:~# docker service ls
+ID             NAME      MODE         REPLICAS   IMAGE          PORTS
+hp8k1g8sy7wf   myhttpd   replicated   6/6        httpd:latest   *:8888->80/tcp
+root@Manager:~# docker service ps myhttpd
+ID             NAME            IMAGE          NODE      DESIRED STATE   CURRENT STATE            ERROR                         PORTS
+gg9gk0fqijhc   myhttpd.1       httpd:latest   Manager   Running         Running 2 minutes ago                                  
+mpzbo7obc2lq   myhttpd.2       httpd:latest   node1     Running         Running 2 minutes ago                                  
+mp8r7qba3we9   myhttpd.3       httpd:latest   node2     Running         Running 2 minutes ago                                  
+i11dcw40gsta   myhttpd.4       httpd:latest   Manager   Running         Running 46 seconds ago                                 
+uo86t68elcxj    \_ myhttpd.4   httpd:latest   Manager   Shutdown        Failed 52 seconds ago    "task: non-zero exit (137)"   
+cd587c3ggvea   myhttpd.5       httpd:latest   node1     Running         Running 2 minutes ago                                  
+m8jr13har4tv   myhttpd.6       httpd:latest   node2     Running         Running 2 minutes ago                                  
+root@Manager:~# docker node update --availiability drain node1
+unknown flag: --availiability
+See 'docker node update --help'.
+root@Manager:~# docker node update --availability drain node1
+node1
+root@Manager:~# docker container ls
+CONTAINER ID   IMAGE          COMMAND              CREATED         STATUS         PORTS     NAMES
+ccd7363404e4   httpd:latest   "httpd-foreground"   7 seconds ago   Up 2 seconds   80/tcp    myhttpd.2.xedqqv18xspalr8725jzz4a5g
+72138820487e   httpd:latest   "httpd-foreground"   3 minutes ago   Up 3 minutes   80/tcp    myhttpd.4.i11dcw40gstaqk4e5wwiisd6s
+ac1d2014d102   httpd:latest   "httpd-foreground"   4 minutes ago   Up 4 minutes   80/tcp    myhttpd.1.gg9gk0fqijhcfai6covb2nn55
+root@Manager:~# docker service ls
+ID             NAME      MODE         REPLICAS   IMAGE          PORTS
+hp8k1g8sy7wf   myhttpd   replicated   6/6        httpd:latest   *:8888->80/tcp
+root@Manager:~# docker service ps myhttpd
+ID             NAME            IMAGE          NODE      DESIRED STATE   CURRENT STATE             ERROR                         PORTS
+gg9gk0fqijhc   myhttpd.1       httpd:latest   Manager   Running         Running 4 minutes ago                                   
+xedqqv18xspa   myhttpd.2       httpd:latest   Manager   Running         Running 26 seconds ago                                  
+mpzbo7obc2lq    \_ myhttpd.2   httpd:latest   node1     Shutdown        Shutdown 27 seconds ago                                 
+mp8r7qba3we9   myhttpd.3       httpd:latest   node2     Running         Running 4 minutes ago                                   
+i11dcw40gsta   myhttpd.4       httpd:latest   Manager   Running         Running 3 minutes ago                                   
+uo86t68elcxj    \_ myhttpd.4   httpd:latest   Manager   Shutdown        Failed 3 minutes ago      "task: non-zero exit (137)"   
+ksli6p5lj99e   myhttpd.5       httpd:latest   node2     Running         Running 26 seconds ago                                  
+cd587c3ggvea    \_ myhttpd.5   httpd:latest   node1     Shutdown        Shutdown 27 seconds ago                                 
+m8jr13har4tv   myhttpd.6       httpd:latest   node2     Running         Running 4 minutes ago                                   
+root@Manager:~# 
+root@Manager:~# docker node ls
+ID                            HOSTNAME   STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
+icq8ge6a6cxfsvea34zhzhr0x *   Manager    Ready     Active         Leader           26.1.4
+90bu1mkrcam661d8fdqsl23ix     node1      Ready     Drain                           27.0.2
+rpr3dxu9vwwwflhi000dk39wv     node2      Ready     Active                          27.0.2
+root@Manager:~# docker service ps myhttpd | grep -v \_
+ID             NAME            IMAGE          NODE      DESIRED STATE   CURRENT STATE            ERROR                         PORTS
+gg9gk0fqijhc   myhttpd.1       httpd:latest   Manager   Running         Running 6 minutes ago                                  
+xedqqv18xspa   myhttpd.2       httpd:latest   Manager   Running         Running 2 minutes ago                                  
+mp8r7qba3we9   myhttpd.3       httpd:latest   node2     Running         Running 6 minutes ago                                  
+i11dcw40gsta   myhttpd.4       httpd:latest   Manager   Running         Running 5 minutes ago                                  
+ksli6p5lj99e   myhttpd.5       httpd:latest   node2     Running         Running 2 minutes ago                                  
+m8jr13har4tv   myhttpd.6       httpd:latest   node2     Running         Running 6 minutes ago                                  
+root@Manager:~# 
+			
+		 
+		 
+What if manager crashes?
+
+In realtime cenario we using multiple managers
+If one manager crashes immediatly the next manager become the leader.		 
+		 
+		 
+		 
+		 
+		 
+
+		 
+		  
+Docker stack :----                               17th session
+============================
+
+Docker compose, when implemented in docker swarm is called docker stack.
+
+We use docker compose to create yml files, via those ymal files we setup multi-container architecture.
+Take the ymal file and deploy that into the docker swarm then we called it as "Docker stack".
+
+			Docker compose + Docker starm == Docker stack
+			Docker compose + kubernates   == Kompose
+	
+	
+Example:----
+
+ubuntu@Manager:~$ sudo su -
+root@Manager:~# 
+root@Manager:~# vi stack1.yml
+
+---
+version: '3.8'
+services:
+  mydb:
+    image: mysql:5
+    environment:
+      MYSQL_ROOT_PASSWORD: Nandu@12345
+
+  mywordpress:
+    image: wordpress
+    ports:
+      - 8888:80
+
+...
+
+
+root@Manager:~# docker stack deploy -c stack1.yml myapp
+Creating network myapp_default
+Creating service myapp_mywordpress
+Creating service myapp_mydb
+root@Manager:~# docker stack ls
+NAME      SERVICES
+myapp     2
+root@Manager:~# docker service ls
+ID             NAME                MODE         REPLICAS   IMAGE              PORTS
+5lamur6pkqfh   myapp_mydb          replicated   1/1        mysql:5            
+huj4cfjzdshm   myapp_mywordpress   replicated   1/1        wordpress:latest   *:8888->80/tcp
+root@Manager:~# docker stack ps myapp
+ID             NAME                  IMAGE              NODE      DESIRED STATE   CURRENT STATE            ERROR     PORTS
+q29pr4nwqskp   myapp_mydb.1          mysql:5            worker1   Running         Running 37 seconds ago             
+v5hoxwdvuhnb   myapp_mywordpress.1   wordpress:latest   worker2   Running         Running 33 seconds ago             
+root@Manager:~#
+
+
+Note :--  Docker compose files are deploying into docker swarm then it calling as docker stack. ("The above process is called as docker stack".)
+			
+			                                     
+												 filename    (we giving some random name)  
+												    |          |  
+			command  ----  docker stack deploy -c stack1.yml myapp                            (stack is the combination of multiple services)
+			
+			
+For deleting the docker stack files command is  "docker stack rm filename"
+
+root@Manager:~# docker stack rm myapp
+Removing service myapp_mydb
+Removing service myapp_mywordpress
+Removing network myapp_default
+root@Manager:~# 
+
+Now In writing code to create replicas for mysql and wordpress images
+
+root@Manager:~# vi stack1.yml
+
+---
+version: '3.8'
+services:
+  mydb:
+    image: mysql:5
+    environment:
+      MYSQL_ROOT_PASSWORD: Nandu@12345
+	deploy:
+	   replicas: 2
+
+  mywordpress:
+    image: wordpress
+    ports:
+      - 8888:80
+	deploy:
+	   replicas: 3
+
+...
+
+save and quit
+
+root@Manager:~# docker stack deploy -c stack1.yml myapp
+Creating network myapp_default
+Creating service myapp_mydb
+Creating service myapp_mywordpress
+root@Manager:~# 
+
+root@Manager:~# docker service ls
+ID             NAME                MODE         REPLICAS   IMAGE              PORTS
+ijofo8jnvdbj   myapp_mydb          replicated   2/2        mysql:5            
+e5gf38msp9gf   myapp_mywordpress   replicated   3/3        wordpress:latest   *:8888->80/tcp
+root@Manager:~# 
+
+root@Manager:~# docker stack ps myapp
+ID             NAME                      IMAGE              NODE      DESIRED STATE   CURRENT STATE            ERROR                              PORTS
+s230ww7xunyg   myapp_mydb.1              mysql:5            worker1   Running         Running 3 minutes ago                                       
+ssrhj9cz03mf   myapp_mydb.2              mysql:5            worker2   Running         Running 3 minutes ago                                       
+rivr8c7cwve0   myapp_mywordpress.1       wordpress:latest   worker2   Running         Running 3 minutes ago                                       
+z3ewwmubzirf   myapp_mywordpress.2       wordpress:latest   worker2   Running         Running 3 minutes ago                                         
+g2ai2vrdadsb   myapp_mywordpress.3       wordpress:latest   worker1   Running         Running 3 minutes ago                                       
+root@Manager:~#
+
+Here "mysql" "two" replicas are running in worker1 & worker2 and "wordpress" "Three" replicas are running in worker1 and worker2
+
+root@Manager:~# docker service ls
+ID             NAME                MODE         REPLICAS   IMAGE              PORTS
+ijofo8jnvdbj   myapp_mydb          replicated   2/2        mysql:5            
+e5gf38msp9gf   myapp_mywordpress   replicated   3/3        wordpress:latest   *:8888->80/tcp
+root@Manager:~#
+
+==================================================
+
+using scalling here
+
+By using scalling increasing the mysql replicas count from "two as to three". for that command is  -------------  "docker service scale Name of replicas=number count 
+
+			"docker service scale myapp_mydb=3"
+
+root@Manager:~# docker service scale myapp_mydb=3
+myapp_mydb scaled to 3
+overall progress: 3 out of 3 tasks 
+1/3: running   [==================================================>] 
+2/3: running   [==================================================>] 
+3/3: running   [==================================================>] 
+verify: Service converged
+
+========================================================================
+
+
+Here we only desiding containers where has to run in "manager, worker1, worker2".
+
+root@Manager:~# vi stack2.yml
+---
+version: '3.8'
+services:
+  myjenkins:
+    image: jenkins/jenkins
+    ports:
+	  - 5050:8080
+	deploy:
+	   replicas: 2
+	   placement:
+	     constaints:
+		   - node.hostname == Manager  
+
+  QAserver:
+    image: tomcat
+    ports:
+      - 6060:8080
+	deploy:
+	   replicas: 3
+	   replacement:
+	     constaints:
+		   - node.hostname == worker1
+		   - node.hostname != manager
+		   
+  Prodserver:
+    image: tomcat
+	ports:
+	  - 7070:8080
+	deploy:
+	  replicas: 4
+	  replacement:
+	    constaints:
+		  - node.hostname == worker2
+
+...
+
+save and quit
+
+root@Manager:~# docker stack deploy -c stack2.yml myapp
+Creating network myapp_default
+Creating service myapp_myjenkins
+Creating service myapp_QAserver
+Creating service myapp_Prodserver
+
+root@Manager:~# docker stack ls
+NAME      SERVICES
+myapp     3
+root@Manager:~# docker service ls
+ID             NAME               MODE         REPLICAS   IMAGE                    PORTS
+he1smj574ktz   myapp_Prodserver   replicated   4/4        tomcat:latest            *:7070->8080/tcp
+kn22kxm0fk4j   myapp_QAserver     replicated   3/3        tomcat:latest            *:6060->8080/tcp
+gnik0b3me6xa   myapp_myjenkins    replicated   0/2        jenkins/jenkins:latest   *:5050->8080/tcp
+root@Manager:~# 
+root@Manager:~# docker stack ps myapp
+ID             NAME                    IMAGE                    NODE      DESIRED STATE   CURRENT STATE                      ERROR                              PORTS
+z968yk27nzbm   myapp_Prodserver.1      tomcat:latest            worker2   Running         Running about a minute ago                                            
+n758kw96q32i   myapp_Prodserver.2      tomcat:latest            worker2   Running         Running about a minute ago                                            
+u4qef3s35rxa   myapp_Prodserver.3      tomcat:latest            worker2   Running         Running about a minute ago                                            
+olui7wwgoo7o   myapp_Prodserver.4      tomcat:latest            worker2   Running         Running about a minute ago                                            
+euaruxoaolmk   myapp_QAserver.1        tomcat:latest            worker1   Running         Running about a minute ago                                            
+3bzd6gcfzx76   myapp_QAserver.2        tomcat:latest            worker1   Running         Running about a minute ago                                            
+jawm277sjjcf   myapp_QAserver.3        tomcat:latest            worker1   Running         Running about a minute ago                                            
+f1nye6opo82a   myapp_myjenkins.1       jenkins/jenkins:latest   Manager   Ready           Preparing less than a second ago                                      
+zq0925zfza6y    \_ myapp_myjenkins.1   jenkins/jenkins:latest   Manager   Shutdown        Rejected 2 seconds ago             "No such image: jenkins/jenkin…"   
+jvawlzsjtn0y    \_ myapp_myjenkins.1   jenkins/jenkins:latest   Manager   Shutdown        Rejected 7 seconds ago             "No such image: jenkins/jenkin…"   
+mnwkuh33potp    \_ myapp_myjenkins.1   jenkins/jenkins:latest   Manager   Shutdown        Rejected 11 seconds ago            "No such image: jenkins/jenkin…"   
+2scwp3rckg0v    \_ myapp_myjenkins.1   jenkins/jenkins:latest   Manager   Shutdown        Rejected 17 seconds ago            "No such image: jenkins/jenkin…"   
+hecyj43frz7j   myapp_myjenkins.2       jenkins/jenkins:latest   Manager   Ready           Preparing less than a second ago                                      
+3s8q4u7nrm0o    \_ myapp_myjenkins.2   jenkins/jenkins:latest   Manager   Shutdown        Rejected 2 seconds ago             "No such image: jenkins/jenkin…"   
+le2e84s969jk    \_ myapp_myjenkins.2   jenkins/jenkins:latest   Manager   Shutdown        Rejected 7 seconds ago             "No such image: jenkins/jenkin…"   
+y2e25f6rjrxz    \_ myapp_myjenkins.2   jenkins/jenkins:latest   Manager   Shutdown        Rejected 11 seconds ago            "No such image: jenkins/jenkin…"   
+12ygq0l9r9t2    \_ myapp_myjenkins.2   jenkins/jenkins:latest   Manager   Shutdown        Rejected 17 seconds ago            "No such image: jenkins/jenkin…"   
+root@Manager:~# 
+
+
+Actually "Quorum is desides where this containers suppose to run.
+Now am taking the controls and am assigning the containers in which server suppose to run (Manager,worker1,worker2) am assigning.
+
+
+When "Manager" machines crashes, it will be unreachable in that situation we use bellow command.
+
+	command ----  "docker swarm init --force-new-cluster"     (This command will reset the setting)
+
+==========================================================================================================================================================================
+
+How we put an upper-limit on the hardware resources (containers restructing to use limited cpu's and memory)
+
+"The default behaviour of docker is when container is running and if the container doing lot of work automatically docker engine provides to that container more and more hardwares.
+If container is doing more activity the docker engine automatically gives more cpu and more memory
+
+The problem with this process is if any container is consuming more and more hardware resources, There is a posibility that other applications which are running on the same server
+might face shortage issue of hardware.
+
+
+root@Manager:~# vi stack3.yml
+---
+version: '3.8'
+services:
+  hub:
+    image: selenium/hub
+    ports:
+      - 4444:4444
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: "200M"
+        
+  firefox:
+    image: selenium/node-firefox-debug
+    ports:
+      - 5901:5900
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: "300M"
+        
+  chrome:
+    image: selenium/node-chrome-debug
+	ports:
+      - 5902:5900
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: "300M"
+
+...
+
+save & quit
+
+root@Manager:~# docker stack deploy -c stack3.yml selenium
+Creating network selenium_default
+Creating service selenium_firefox
+Creating service selenium_chrome
+Creating service selenium_hub
+root@Manager:~# docker stack ls
+NAME       SERVICES
+selenium   3
+
+root@Manager:~# docker service inspect selenium_chrome --pretty
+
+ID:             xvq6gsh8r873cl9de0gc6xcli
+Name:           selenium_chrome
+Labels:
+ com.docker.stack.image=selenium/node-chrome-debug
+ com.docker.stack.namespace=selenium
+Service Mode:   Replicated
+ Replicas:      2
+Placement:
+UpdateConfig:
+ Parallelism:   1
+ On failure:    pause
+ Monitoring Period: 5s
+ Max failure ratio: 0
+ Update order:      stop-first
+RollbackConfig:
+ Parallelism:   1
+ On failure:    pause
+ Monitoring Period: 5s
+ Max failure ratio: 0
+ Rollback order:    stop-first
+ContainerSpec:
+ Image:         selenium/node-chrome-debug:latest@sha256:4205fd019f4c290e027dd100cc99c609614a952e41370c28d56600b32855e1f5
+Resources:
+ Limits:
+  CPU:          0.1
+  Memory:       300MiB
+Networks: selenium_default 
+Endpoint Mode:  vip
+Ports:
+ PublishedPort = 5902
+  Protocol = tcp
+  TargetPort = 5900
+  PublishMode = ingress 
+
+root@Manager:~# 
+
+==============================================================================================
+
+docker sercrets:
+========================
+
+We have to create docker secrets in manager server only
+
+root@Manager:~# echo "Nandu" | docker secret create mysecret -
+d605y5cu8b9x2sz1gd0mvg19m
+root@Manager:~# docker secret ls
+ID                          NAME       DRIVER    CREATED          UPDATED
+d605y5cu8b9x2sz1gd0mvg19m   mysecret             11 seconds ago   11 seconds ago
+root@Manager:~# 
+root@Manager:~# docker service create --name myredis --replicas 2 --secret mysecret redis
+bg5br11d0t9vnv6vtegzhmap7
+overall progress: 0 out of 2 tasks 
+overall progress: 0 out of 2 tasks 
+overall progress: 0 out of 2 tasks 
+1/2: preparing [=================================>                 ] 
+2/2: preparing [=================================>                 ] 
+^COperation continuing in background.
+Use `docker service ps bg5br11d0t9vnv6vtegzhmap7` to check progress.
+root@Manager:~# 
+root@Manager:~# docker service ps bg5br11d0t9vnv6vtegzhmap7
+ID             NAME            IMAGE          NODE      DESIRED STATE   CURRENT STATE                 ERROR                              PORTS
+tm2xz6ljphso   myredis.1       redis:latest   Manager   Running         Preparing 42 seconds ago                                         
+17aokvk02s8a    \_ myredis.1   redis:latest   Manager   Shutdown        Rejected 42 seconds ago       "No such image: redis:latest@s…"   
+ffylihkmy9rt    \_ myredis.1   redis:latest   Manager   Shutdown        Rejected about a minute ago   "No such image: redis:latest@s…"   
+kez17qq9f0ku    \_ myredis.1   redis:latest   Manager   Shutdown        Rejected about a minute ago   "No such image: redis:latest@s…"   
+o2i7no843gkv    \_ myredis.1   redis:latest   Manager   Shutdown        Rejected 2 minutes ago        "No such image: redis:latest@s…"   
+al7euls1pngg   myredis.2       redis:latest   Manager   Running         Preparing 42 seconds ago                                         
+5c53194y0ozr    \_ myredis.2   redis:latest   Manager   Shutdown        Rejected 42 seconds ago       "No such image: redis:latest@s…"   
+vkd6p49ako3t    \_ myredis.2   redis:latest   Manager   Shutdown        Rejected about a minute ago   "No such image: redis:latest@s…"   
+8uwrnonkxdwv    \_ myredis.2   redis:latest   Manager   Shutdown        Rejected about a minute ago   "No such image: redis:latest@s…"   
+sm7prkzbvbrs    \_ myredis.2   redis:latest   Manager   Shutdown        Rejected 2 minutes ago        "No such image: redis:latest@s…" 

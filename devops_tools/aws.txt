@@ -1,0 +1,566 @@
+
+EC2 instances  
+
+managed services -- RDS (backups, software patching, automatic failure detection, and recovery.)
+
+
+
+serverless  -- lambda,SNS,S3,SQS,SES  
+
+lambda -- Lambda is a fully managed serverless computing service where you only need to upload and run your code to start
+
+SQS(Simple Queue service) -- (SQS) is a managed message queuing service technical professionals and developers use to send, store and retrieve multiple messages.
+
+S3 (simple storage service) -- is an object storage service offering industry-leading scalability, data availability, security, and performance.
+
+SNS (Simple Notification service) -- SNS is a web service that makes it easy to set up, operate, and send notifications from the cloud.
+
+SES (Simple Email service) -- SES is an email platform that provides an easy, cost-effective way for you to send and receive email using your own email addresses and domains.
+
+
+Microservices -- ECS,EKS
+
+
+
+
+HVM -- Hardware virtual machine
+
+EBS -- Elastic Block store (EBS an easy-to-use, scalable, high-performance block-storage service designed for Amazon Elastic Compute Cloud (Amazon EC2).
+
+				Amazon EBS allows you to create storage volumes and attach them to 
+				Amazon EC2 instances. Once attached, you can create a file system on 
+				top of these volumes, run a database, or use them in any other way 
+				you would use block storage.
+
+MFA -- Multi-factor authiantication for IAM(Identity access management)
+
+		MFA is an AWS(IAM) best practice that requires a second 
+		authentication factor in addition to user name and password 
+		sign-in credentials. You can enable MFA at the AWS account 
+		level for root and IAM users you have created in your account.
+
+Difference b/w application server
+
+  --> middleware ---> Database(Storage)  
+  
+SLA  -- service level agrement
+
+ASG -- Auto-scalling group
+
+Flowlogs -- By usiing flowlog can identify the IP addresses when any user multi-hitting the server. flowlog can identify.
+
+
+P1 prority1 tickets (Importent tickets)client (close immediatly)
+
+IOPS -- 
+
+UAT --- User accepting test
+
+
+                    DEV  ----   Testing ----  Stagging --- UAT  --- Pilot/pre-prod Environment  ---  Production.
+  
+  
+NIC -- Network interface cards.(eithernet card)
+
+pem -- private enhance 
+
+ppk -- putty private key
+
+fqdn -- fully qualified domain name
+
+GA -- General (or)
+
+MSI -- microsoft installer
+
+IANA -- IANA is a orgainization which provide the IPV4(ip addresses) all over the world. 
+			In ipv4 has 2(32) 
+			In ipv6 has 2(128)
+			
+nacking -- Internally maintain ipv4 has connected to external of ipv6.
+
+
+
+
+Hostname, fqdn , forward lookup 
+
+forward lookup -- Forward lookup refers to the manner in which a DNS server resolves a host name to an IP address. Forward means name to IP.
+
+
+Internet vs Intranet
+
+lan --  local  area network
+van -- vide area network
+man --- 
+
+
+linux commands
+
+uptime --- uptime command is used for server running time,date when it started.
+
+Read(4) write(2) execute(1) = 7
+
+owner --  read,write   
+group --  read,execute
+others -- read
+
+hardening -- securely enhancmenet
+
+(~) symbol -- default directory of user.
+
+pwd -- print working directory.
+
+ROM -- Read only memory(temparary storage)If we reboot it will delete the temparary data.
+
+t -- sticky 
+
+
+DevOpsgeek777
+
+
+      
+sudo -- supper user
+
+
+Apache/httpd both are same
+Apache will be use on ubuntu 
+httpd will be used on redhat
+
+       				    ubuntu                                                                 redhat
+				
+			   apt                                                                       yum
+			   sudo apt update (or) sudo apt update                                  sudo yum update
+			   sudo apt install nginx													 sudo yum install nginx
+			   sudo service nginx status												 sudo systemctl status nginx
+			   sudo service nginx start													 sudo systemctl enable nginx			   
+			   sudo systemctl enable nginx												 
+			   sudo chmod 777 /var/www/html												 sudo yum httpd
+			   
+
+
+To delete packages in ubuntu server command is sudo apt remove filename -y
+
+
+learn
+
+TCP/IP port numbers atleast 30.
+FTP (file transfer protocol)control -- 21
+FTP (file transfer protocol)data    -- 20
+HTTP(Hypertext transfer protocol)-- 80   -- Alternate HTTP 8080
+HTTPS 443  -- HTTPS is secure and encrypted version of HTTP, All HTTPS web traffic goes to prot 443
+SSH 22
+RDP(Remote Desktop protocol) -- 3389 
+SMTP(Simple Mail Transmitting protocol) -- 25 used for mail 
+DNS(Domain name system) - 53
+BNS(Border gateway protocal) - 179
+NTP(Network TIme Protocol) - 123
+ISAKMP(Internet security Association and key management protocol) -- 500
+Telnet -- 23
+TFTP -- 69
+SNMP -- 161,162
+MYSQL -- 3306
+POP3 -- 110
+RIP -- 520 
+RTP(voice and video transport porotocol) -- 5004
+jenkins -- 8080
+tomcat  -- 8080
+apache2  -- 80
+nginx   -- 80
+
+
+
+linux commands atleast 200 in mutliple ways
+Learn installation of packages in servers
+
+
+
+
+   1  sudo apt update
+   2  sudo apt install nginx -y
+   3  sudo vi /etc/nginx/sites-available/default
+   4  sudo service nginx restart
+   5  sudo ufw allow 8080/tcp
+   
+   
+   
+   
+   6  sudo apt install apache2 -y
+   7  cd /etc
+   8  ls
+   9  cd apache2
+   10  ls
+   11  sudo vim ports.conf
+   12  sudo service apache2 restart
+   13  sudo ufw allow 8082/tcp
+   14  Try to connect with publicIP:8082 it will work.
+   
+   
+   
+   install nginx 
+   sudo apt install nginx -y
+   change the port number in ec2 instance==>security==>inbounds==>type as CUSTOM TCP ===> Give port number and save the rules.
+   Now we have to change the nginx port number 80 to 8082
+   sudo vi /etc/nginx/sites-available/default
+   Restart the nginx ===>   sudo service nginx restart   ====>  sudo ufw allow 8080/tcp
+   If we try with publicIP:8082 it works.
+   
+   
+   How we connect ec2 instance through putty
+   
+   First open puttygen and then click on load and fil filename with pem.key folder  ==> click on open, and save as private key
+   Now open putty and near hostname add ec2 instance publicIP and left side click on SSH ===> Autherization ===> credentials.
+   Next browse for private key click on open. putty will connect.
+   
+   
+   
+   
+AWS AMI(Amazon Machine Image):--
+
+AWS ami is an image that provides the software that is required to set up and boot an amazon ec2 instance.
+You can use an AMI provided by aws, a public AMI, an ami that someone else shared with you, or an AMI that you purchase from the aws marketplace.
+
+AMI is like OS
+
+Running state of AMI is called as instance
+
+usescases
+
+==========================================================================================================
+
+free-css.com  ---  (website for free sites for practicing)
+
+nginx folder -- /var/www/html
+
+
+Here we installed nginx, in same server we trying to access some website page. spering website.
+download spering website as well download winSCP app 
+open winscp click on Hostname(publicIP of instance),username as ubuntu,for password, click on Advance -- Authentication -- private key(...)three dots click onit.
+paste the privateKey of instance -- click on open -- click on login
+
+create any files -- copy to clipboard  
+right side right click and paste (check the location).
+
+
+
+ubuntu@ip-172-31-84-47:~$
+ubuntu@ip-172-31-84-47:~$
+ubuntu@ip-172-31-84-47:~$ cd /var/www/html
+ubuntu@ip-172-31-84-47:/var/www/html$ ls
+index.nginx-debian.html
+ubuntu@ip-172-31-84-47:/var/www/html$ ls -l
+total 4
+ubuntu@ip-172-31-84-47:/var/www/html$ cd
+ubuntu@ip-172-31-84-47:~$ ls -la
+total 28
+drwxr-x--- 4 ubuntu ubuntu 4096 Sep 30 06:07 .
+drwxr-xr-x 3 root   root   4096 Sep 30 06:04 ..
+-rw-r--r-- 1 ubuntu ubuntu  220 Mar 31  2024 .bash_logout
+-rw-r--r-- 1 ubuntu ubuntu 3771 Mar 31  2024 .bashrc
+drwx------ 2 ubuntu ubuntu 4096 Sep 30 06:05 .cache
+-rw-r--r-- 1 ubuntu ubuntu  807 Mar 31  2024 .profile
+drwx------ 2 ubuntu ubuntu 4096 Sep 30 06:04 .ssh
+-rw-r--r-- 1 ubuntu ubuntu    0 Sep 30 06:07 .sudo_as_admin_successful
+ubuntu@ip-172-31-84-47:~$ cd /var/www/html
+ubuntu@ip-172-31-84-47:/var/www/html$ ls -la
+total 12
+drwxrwxrwx 2 root root 4096 Sep 30 06:08 .
+drwxr-xr-x 3 root root 4096 Sep 30 06:08 ..
+-rw-r--r-- 1 root root  615 Sep 30 06:08 index.nginx-debian.html
+ubuntu@ip-172-31-84-47:/var/www/html$
+ubuntu@ip-172-31-84-47:/var/www/html$ cd
+ubuntu@ip-172-31-84-47:~$ wget https://www.free-css.com/assets/files/free-css-te                                                                                                             mplates/download/page296/spering.zip
+--2024-09-30 06:27:58--  https://www.free-css.com/assets/files/free-css-template                                                                                                             s/download/page296/spering.zip
+Resolving www.free-css.com (www.free-css.com)... 217.160.0.242, 2001:8d8:100f:f0                                                                                                             00::28f
+Connecting to www.free-css.com (www.free-css.com)|217.160.0.242|:443... connecte                                                                                                             d.
+HTTP request sent, awaiting response... 200 OK
+Length: 557415 (544K) [application/zip]
+Saving to: ‘spering.zip’
+
+spering.zip         100%[===================>] 544.35K  1.00MB/s    in 0.5s
+
+2024-09-30 06:27:59 (1.00 MB/s) - ‘spering.zip’ saved [557415/557415]
+
+ubuntu@ip-172-31-84-47:~$ ls
+spering.zip
+ubuntu@ip-172-31-84-47:~$ unzip spering.zip
+Command 'unzip' not found, but can be installed with:
+sudo apt install unzip
+ubuntu@ip-172-31-84-47:~$ sudo apt install unzip
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Suggested packages:
+  zip
+The following NEW packages will be installed:
+  unzip
+0 upgraded, 1 newly installed, 0 to remove and 143 not upgraded.
+Need to get 175 kB of archives.
+After this operation, 384 kB of additional disk space will be used.
+Get:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 unzip amd6                                                                                                             4 6.0-28ubuntu4 [175 kB]
+Fetched 175 kB in 0s (9022 kB/s)
+Selecting previously unselected package unzip.
+(Reading database ... 67789 files and directories currently installed.)
+Preparing to unpack .../unzip_6.0-28ubuntu4_amd64.deb ...
+Unpacking unzip (6.0-28ubuntu4) ...
+Setting up unzip (6.0-28ubuntu4) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Scanning processes...
+Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+ubuntu@ip-172-31-84-47:~$
+ubuntu@ip-172-31-84-47:~$ unzip spering.zip
+Archive:  spering.zip
+   creating: spering-html/
+  inflating: spering-html/about.html
+  inflating: spering-html/category.html
+   creating: spering-html/css/
+  inflating: spering-html/css/bootstrap.css
+  inflating: spering-html/css/responsive.css
+  inflating: spering-html/css/style.css
+  inflating: spering-html/css/style.css.map
+  inflating: spering-html/css/style.scss
+   creating: spering-html/images/
+  inflating: spering-html/images/about-img.jpg
+  inflating: spering-html/images/c1.png
+  inflating: spering-html/images/c2.png
+  inflating: spering-html/images/c3.png
+  inflating: spering-html/images/c4.png
+  inflating: spering-html/images/c5.png
+  inflating: spering-html/images/c6.png
+  inflating: spering-html/images/call.png
+  inflating: spering-html/images/experience-img.jpg
+  inflating: spering-html/images/f1.png
+  inflating: spering-html/images/f2.png
+  inflating: spering-html/images/f3.png
+  inflating: spering-html/images/f4.png
+  inflating: spering-html/images/fb.png
+  inflating: spering-html/images/freelance-img.jpg
+  inflating: spering-html/images/instagram.png
+  inflating: spering-html/images/linkedin.png
+  inflating: spering-html/images/location.png
+  inflating: spering-html/images/logo.png
+  inflating: spering-html/images/mail.png
+  inflating: spering-html/images/menu.png
+  inflating: spering-html/images/next-angle.png
+  inflating: spering-html/images/next.png
+  inflating: spering-html/images/prev-angle.png
+  inflating: spering-html/images/prev.png
+  inflating: spering-html/images/quote.png
+  inflating: spering-html/images/search-icon.png
+  inflating: spering-html/images/slider-img.png
+  inflating: spering-html/images/twitter.png
+  inflating: spering-html/images/youtube.png
+  inflating: spering-html/index.html
+   creating: spering-html/js/
+  inflating: spering-html/js/bootstrap.js
+  inflating: spering-html/js/custom.js
+  inflating: spering-html/js/jquery-3.4.1.min.js
+  inflating: spering-html/work.html
+ubuntu@ip-172-31-84-47:~$
+ubuntu@ip-172-31-84-47:~$ ls
+spering-html  spering.zip
+ubuntu@ip-172-31-84-47:~$ cd spering-html/
+ubuntu@ip-172-31-84-47:~/spering-html$ ls
+about.html  category.html  css  images  index.html  js  work.html
+ubuntu@ip-172-31-84-47:~/spering-html$ cd ..
+ubuntu@ip-172-31-84-47:~$ ls
+spering-html  spering.zip
+ubuntu@ip-172-31-84-47:~$ mv spering-html/ spering
+ubuntu@ip-172-31-84-47:~$ ls
+spering  spering.zip
+ubuntu@ip-172-31-84-47:~$ rm spering.zip
+ubuntu@ip-172-31-84-47:~$ sudo cp -r spering/ /var/www/html
+
+
+
+
+
+
+
+2nd practice
+ubuntu@ip-172-31-84-47:~$ wget https://www.free-css.com/assets/files/free-css-templates/download/page296/carvilla.zip
+--2024-09-30 06:47:25--  https://www.free-css.com/assets/files/free-css-templates/download/page296/carvilla.zip
+Resolving www.free-css.com (www.free-css.com)... 217.160.0.242, 2001:8d8:100f:f000::28f
+Connecting to www.free-css.com (www.free-css.com)|217.160.0.242|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 2204120 (2.1M) [application/zip]
+Saving to: ‘carvilla.zip’
+
+carvilla.zip                                    100%[====================================================================================================>]   2.10M  2.94MB/s    in 0.7s
+
+2024-09-30 06:47:26 (2.94 MB/s) - ‘carvilla.zip’ saved [2204120/2204120]
+
+ubuntu@ip-172-31-84-47:~$ ls
+carvilla.zip  spering
+ubuntu@ip-172-31-84-47:~$ unzip carvilla.zip
+Archive:  carvilla.zip
+   creating: carvilla-v1.0/assets/
+   creating: carvilla-v1.0/assets/css/
+  inflating: carvilla-v1.0/assets/css/animate.css
+  inflating: carvilla-v1.0/assets/css/bootsnav.css
+  inflating: carvilla-v1.0/assets/css/bootstrap.min.css
+  inflating: carvilla-v1.0/assets/css/flaticon.css
+  inflating: carvilla-v1.0/assets/css/font-awesome.min.css
+  inflating: carvilla-v1.0/assets/css/linearicons.css
+  inflating: carvilla-v1.0/assets/css/owl.carousel.min.css
+  inflating: carvilla-v1.0/assets/css/owl.theme.default.min.css
+  inflating: carvilla-v1.0/assets/css/responsive.css
+  inflating: carvilla-v1.0/assets/css/style.css
+   creating: carvilla-v1.0/assets/fonts/
+  inflating: carvilla-v1.0/assets/fonts/Flaticon.eot
+  inflating: carvilla-v1.0/assets/fonts/Flaticon.svg
+  inflating: carvilla-v1.0/assets/fonts/Flaticon.ttf
+  inflating: carvilla-v1.0/assets/fonts/Flaticon.woff
+  inflating: carvilla-v1.0/assets/fonts/FontAwesome.otf
+  inflating: carvilla-v1.0/assets/fonts/fontawesome-webfont.eot
+  inflating: carvilla-v1.0/assets/fonts/fontawesome-webfont.svg
+  inflating: carvilla-v1.0/assets/fonts/fontawesome-webfont.ttf
+  inflating: carvilla-v1.0/assets/fonts/fontawesome-webfont.woff
+  inflating: carvilla-v1.0/assets/fonts/fontawesome-webfont.woff2
+  inflating: carvilla-v1.0/assets/fonts/glyphicons-halflings-regular.eot
+  inflating: carvilla-v1.0/assets/fonts/glyphicons-halflings-regular.svg
+  inflating: carvilla-v1.0/assets/fonts/glyphicons-halflings-regular.ttf
+  inflating: carvilla-v1.0/assets/fonts/glyphicons-halflings-regular.woff
+  inflating: carvilla-v1.0/assets/fonts/glyphicons-halflings-regular.woff2
+  inflating: carvilla-v1.0/assets/fonts/Linearicons-Free.eot
+  inflating: carvilla-v1.0/assets/fonts/Linearicons-Free.svg
+  inflating: carvilla-v1.0/assets/fonts/Linearicons-Free.ttf
+  inflating: carvilla-v1.0/assets/fonts/Linearicons-Free.woff
+  inflating: carvilla-v1.0/assets/fonts/Linearicons-Free.woff2
+   creating: carvilla-v1.0/assets/images/
+   creating: carvilla-v1.0/assets/images/brand/
+ extracting: carvilla-v1.0/assets/images/brand/br1.png
+ extracting: carvilla-v1.0/assets/images/brand/br2.png
+  inflating: carvilla-v1.0/assets/images/brand/br3.png
+  inflating: carvilla-v1.0/assets/images/brand/br4.png
+  inflating: carvilla-v1.0/assets/images/brand/br5.png
+ extracting: carvilla-v1.0/assets/images/brand/br6.png
+   creating: carvilla-v1.0/assets/images/clients/
+ extracting: carvilla-v1.0/assets/images/clients/c1.png
+ extracting: carvilla-v1.0/assets/images/clients/c2.png
+ extracting: carvilla-v1.0/assets/images/clients/c3.png
+   creating: carvilla-v1.0/assets/images/featured-cars/
+  inflating: carvilla-v1.0/assets/images/featured-cars/fc1.png
+  inflating: carvilla-v1.0/assets/images/featured-cars/fc2.png
+  inflating: carvilla-v1.0/assets/images/featured-cars/fc3.png
+  inflating: carvilla-v1.0/assets/images/featured-cars/fc4.png
+  inflating: carvilla-v1.0/assets/images/featured-cars/fc5.png
+  inflating: carvilla-v1.0/assets/images/featured-cars/fc6.png
+  inflating: carvilla-v1.0/assets/images/featured-cars/fc7.png
+  inflating: carvilla-v1.0/assets/images/featured-cars/fc8.png
+   creating: carvilla-v1.0/assets/images/new-cars-model/
+  inflating: carvilla-v1.0/assets/images/new-cars-model/ncm1.png
+  inflating: carvilla-v1.0/assets/images/new-cars-model/ncm2.png
+  inflating: carvilla-v1.0/assets/images/new-cars-model/ncm3.png
+   creating: carvilla-v1.0/assets/images/welcome-hero/
+  inflating: carvilla-v1.0/assets/images/welcome-hero/welcome-banner.jpg
+   creating: carvilla-v1.0/assets/js/
+  inflating: carvilla-v1.0/assets/js/bootsnav.js
+  inflating: carvilla-v1.0/assets/js/bootstrap.min.js
+  inflating: carvilla-v1.0/assets/js/custom.js
+  inflating: carvilla-v1.0/assets/js/feather.min.js
+  inflating: carvilla-v1.0/assets/js/jquery.js
+  inflating: carvilla-v1.0/assets/js/owl.carousel.min.js
+   creating: carvilla-v1.0/assets/logo/
+  inflating: carvilla-v1.0/assets/logo/favicon.png
+  inflating: carvilla-v1.0/index.html
+  inflating: carvilla-v1.0/readme.txt
+ubuntu@ip-172-31-84-47:~$ ls
+carvilla-v1.0  carvilla.zip  spering
+
+
+ubuntu@ip-172-31-84-47:~$ mv carvilla-v1.0/ carvilla
+ubuntu@ip-172-31-84-47:~$ ls
+carvilla  spering
+ubuntu@ip-172-31-84-47:~$ sudo cp -r carvilla /var/www/html
+ubuntu@ip-172-31-84-47:~$
+
+
+==================================================================================================================================
+
+Connecting to instance through online website page processes
+
+
+copy web link from free-css-template.com site (copy link address)
+
+launch EC2 instance we have to donwload nginx package (The nginx location was /var/www/html 
+Give full privilages to /var/www/html --- sudo chmod 777 /var/www/html
+
+Now download the carvilla website path by using wget.
+ubuntu@ip-172-31-84-47:~$ wget https://www.free-css.com/assets/files/free-css-templates/download/page296/carvilla.zip
+--2024-09-30 06:47:25--  https://www.free-css.com/assets/files/free-css-templates/download/page296/carvilla.zip
+Resolving www.free-css.com (www.free-css.com)... 217.160.0.242, 2001:8d8:100f:f000::28f
+Connecting to www.free-css.com (www.free-css.com)|217.160.0.242|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 2204120 (2.1M) [application/zip]
+Saving to: ‘carvilla.zip’
+
+carvilla.zip                                    100%[====================================================================================================>]   2.10M  2.94MB/s    in 0.7s
+
+2024-09-30 06:47:26 (2.94 MB/s) - ‘carvilla.zip’ saved [2204120/2204120]
+
+ubuntu@ip-172-31-84-47:~$ ls
+carvilla.zip  
+ubuntu@ip-172-31-84-47:~$ sudo apt install unzip (one time activity)
+ubuntu@ip-172-31-84-47:~$ unzip carvilla.zip
+Archive:  carvilla.zip
+
+ubuntu@ip-172-31-84-47:~$ ls
+carvilla-v1.0  carvilla.zip  
+
+ubuntu@ip-172-31-84-47:~$ mv carvilla-v1.0/ carvilla
+ubuntu@ip-172-31-84-47:~$ ls
+carvilla  spering
+ubuntu@ip-172-31-84-47:~$ sudo cp -r carvilla /var/www/html
+ubuntu@ip-172-31-84-47:~$
+
+=============================================================================================================================================
+
+
+AWS EBS Snapshots:--
+====================
+
+You can back up the data on your amazon EBS volumes by making point-in-time copies known as Amazon EBS snapshots.
+A snapshot is an incremental backup
+
+KMS -- Key management system.
+
+managed key (It will connect in only one region)
+
+
+tutorialDojo.com
+
+
+EFS -- Elastic file system
+
+s3 buckets
+
+ec2 instance not able to connect? throubleshoots atleast 20
+
+for existing instance EFS instance 
+
+create instance and need to access s3
+
+assignments
+
+
+
+By using linux create instance increase storage and reduce it.
+
+By using windows create instance EBS increase storage and reduce stroage again.
+
+create instance download nginx and apache2 change the ports and try to access.
+
+change the port number of tomcat.
+
+EC2 instance create volume encryption
+
+change jenkins port numbers. 

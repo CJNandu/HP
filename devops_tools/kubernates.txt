@@ -1,0 +1,515 @@
+
+In Drive from 19th session the kubernetes is started.
+
+Kubernates is also called as K8S
+kubernates is container archestration tool, which was initially created by organization called google.
+Kubernates is open source product.
+
+Kubernates where it is downloaded we called it as "Master"  
+
+In kubernates where we use servers as slaves1, slave 2 etc we can use n no of servers as slaves.
+
+              Master is main branch where we installed kubernates(Master) also called as node,menions  
+			  slave1 and slave2 etc will link with master
+			  
+	entire Master,slave1,slave2 total setup is called as kubernates cluster.
+	
+	Kubernates cluster: -- kubernates cluster is a combination of multiple master machines and slave machines, each of this machines also called as menions or node.
+	
+Kubernates all commands start with "kubectl".
+
+
+what is the difference b/w docker swarm and kubernates?
+
+Both are container archestration tools which means they can perform activities like load balancing,scalling,rolling updates high avalability.
+all those thing can be done either using docker swarm (or) kubernates.
+
+one common thing is kubernates is container archestration tool.
+					docker swarm is docker container archestration tool.
+					
+		docker swarm :-- docker swarm works only underlining containers are docker containers.
+		Kubernates :---- Kubernates can work on any kind of containers.
+					
+advantages of kubernates: ---
+==============================
+Kubernates can work wheather underlining containers are docker based containers(or)CRIO based container.
+
+Kubernates objects: --
+=========================
+
+1. Pod: -- * pod is just a layer of obstration on top of a container,Pod is just like a translator.
+		   * Kubernates directly won't talk to the containers, Containers talk with the "pod", Then Pod converts that message to 
+		     kubernates in understandable format of kubernates.
+			 
+			 
+			 
+interview answer for Pod :-- "Kubernates is container archestration tool its not restricted to docker, it can work on any containers.
+		                     They designed kubernates such a way that kubernates only communicate with "Pod" The Pod responsibility to understand
+		                      which kind of container is inside and accordingly do the necessary translation".
+		 
+              
+
+		 
+2. Service: --    Example:  -p 8080:80   (8080 is hostport, 80 is container port)
+						    In kubernetes cluster there is another called as service port
+							
+							host port is linked with service port and service port is linked with container port.
+			
+	Creating 2 pod's in 1st pod creating wordpress container, In 2nd port creating Mysql container. 
+	This two pods are communicates with each other. 
+
+		 Service object :-- service object is seperatelly storing the Ip-address of the pod's
+	===> If any pod is crashed the kubernetes automatically creates the new pod with that (wordpress(or)Mysql) container.
+		 with same Ip-address which is stored in service object.
+    ===> By creating pod with same Ip-address the connection b/w Pod1 & pod2 will stable.
+							
+
+3. Replication controller: --- Replication controller is used for performing two activities of container orchestration load Balancing and scaling.
+								
+								Load balancing and scaling this two activities want to perform multiple replicas to run, and increase or decrease the no
+								of replicas then i have to go with replication controller.
+								
+							    Replication controller is maintaining multiple pod's and each Pod is having again a container.
+								when we create a replication controller, In the replication controller we will have Pod's in the pod's we will have
+								containers
+								
+						
+								
+4. Replicaset :---  Replicaset is same same like Replication controller
+					Replicaset has a reusability factor, feature called as selector
+The selector has a ability to search for elements based on perticular label if it finds those elements it will try to use them
+
+				
+
+		selector: -- selector has ability to pick-up elements based on perticular label and use them.   
+		
+							Maintain multiple replicas, which are running on different different slaves
+							
+Difference b/w replication controller and replicaset is
+
+Both are used for performing activities like load balancing and scaling but the difference is Replicaset has a reusability factor, fearure called selector
+The selector has a ability to search for elements based on perticular label if it finds those elements it will try to use them
+
+*******Imp 70% we work on deployment 
+5. Deployment: ---  Deployment is much more high level object when we create a deployment it creates a replica set and the replica set we have pod's in the Pod's we have containers.
+
+Deployment can do load Balancing, scaling, roling updates operations
+
+When we create a “deployment” internally it is automatically creating the replica set, it will have all the features of 
+replica set of load  balancing, scaling so Deployment can perform load balancing, scaling and also deployment can perform 
+rolling updates.  
+
+6. statefulset:--
+
+		There are two types of softwares
+		stateful applications
+		stateless applications  stateless application is not worried about maintaining any data
+		
+		kubernetes can work on both stateful and stateless applications.
+		for working on stateless applications we use deployment
+		for working on statefull application we use statefulset 
+	
+	In Kubernetes if any replica server is crashed the kubernetes cluster will recreates the replica and retrive the 
+	crashed data. This works on statefulset application 
+	
+		docker swarm can't do that this reterving the data. It just recreate the server.
+		docker swarm will work on stateless application it is not worried about maintaining any data
+		consistancy of data cannot be maintained in docker swarm
+		docker swarm is useful while working on stateless application.
+		
+7 secret  :--  For hiding the data we use secret.
+
+		
+8 ingress : --- Mapping of the domain name with the difference sub-domains and all that using ingress object.
+
+9. horizontalpodautoscaller :--- In kubernetes we perform the autoscalling
+								 Depending on the load the no of pods automatically increased or decreased that can done using the object called as horizontalpodautoscaller.
+
+10. persistantvolume :--  This back-up machanism in the form of volumes.
+
+11. persistantvolumeClaim: ---
+
+
+
+Master slave components:--   (or) Master slave architecture of kubernetes
+
+Master Components:----
+=====================
+1. container runtime :-- The component which is running on the master machine is container runtime generally it is docker.
+2. Kube apiserver  :--- authorization checking wheather user can perform a specific activity or not (modifiying,deleting any activity).
+3. Kube scheduller :---  it will deside where the pod's has to be created, based on the hardware availability.
+						kube scheduller is only a decision maker it desides where pod's have to be created, But actual process of creating
+						the pod is eventually done by kubelet(It run's on the slave machine).
+4. control manager (or) controller:--- control manager is responsible for managing the desired state.
+
+5. etcd (or)xcd :-- etcd is the repository(database)this database stores the information about
+			        How many slaves and master's machines are available in the cluster 
+			        what is the hardware resource available in the slaves
+			        "etcd is the core repository where your entire cluster info is stored."
+				The Kube scheduller and control manager are all performing the activity based on the information
+				comming from the etcd.
+slave components: ----
+=========================
+1. container runtime  :--
+2. kubelet :-- Actually creating the pod is eventually done by kubelet. Kubelet is the responsible for creating the pod
+				creating pod and inside the container creating is responsible of kubelet.
+3. kubeproxy :--- Kubeproxy ensources that for pod's which are related to one micro service architecture will be running on the same slave (or)
+				  they will run on near by slaves.
+				  In kubernetes objects the service port mapping and IP's whenever pod is crashing and recreating to maintain the same IP address for that we need to depend on service object
+				  all those service machanism in background handled by using kubeproxy.
+				  
+Installation of kubernetes
+
+There are five different ways of kubernetes
+
+1st way of installation they come under 2 catagories
+
+  1. Unmanaged/self managed kubernetes setup        21st session 
+     There are three different types
+	 
+      (i) KOPS  --- Kubernetes operations
+	  (ii)Kubeadm - 
+	  (iii)KIND --- Kubernetes in docker
+	  
+  2. Managed kubernetes setup                       22nd session
+		There are two different types
+	
+	   (i)  EKS ---- This EKS works on cloud of AWS   (Elastic Kubernetes services)
+	   (ii) GKE ---- This GKE works on cloud of GCP  (Google cloud)  (GKE google cloud engine
+  
+
+
+KOPS :---  KOPS is the fastest installing process
+In the KOPS we don't setup the "Master&slave" machines.
+Our responsibility to setup only one server it is KOPS server,KOPS server taking care of installation of "master&slave machines".
+
+Master&slave machines are part of EC2 services of AWS 
+KOPS use another service of AWS is S3 (Storage,Bucket,drive)
+KOPS use another service of AWS is Route53(Same like DNS)
+KOPS also activates another service which is called as Auto scalling
+
+Auto scalling is service of AWS which ensure that fixed count of servers are maintained.
+
+All this services are activated by creating the KOPS server
+KOPS server wants to activate this above services it requires permissions, Those permissions are given by AWS, by using IAM 
+
+create new instance with amazon aws linux aws server  ------------------   (Instance type going with t2.micro)
+
+Launch new instance in Ohio region
+given name as KOPS_Server
+selected instance type as t2.micro free version
+Now created new key-pair with KOPS_Ohio and selected it as key_pair
+In networking click on "Edit" and give "ssh as all traffic"
+click on "Launch Instance"
+
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+[ec2-user@ip-172-31-40-143 ~]$
+
+In AWS search for "IAM" and select the "Role" and click on "create Role"
+select "AWS Services, In USE Cases select "EC2" and select the 1st option EC2(allow EC2 instances to call AWS service on your behalf)
+click on "Next"
+Now give "adminstrativeAccess" click on "Next"
+Now give Role name (Kops_hi)anyname and click on "create Role"
+
+Now go back to EC2 instance that you created for KOPsServer select it.
+Now goto "Actions" and go into "Security" and click on "Modify IAM role"
+Now select the role which you created earlier (Kops_hi) and click on "Update IAM role"
+
+So now this Kops server having admin privilages on my AWS account
+
+Now connect that Kops server
+After connected to KopsServer, we have to install Kops
+
+Install Kops on EC2
+
+This bellow command will download the KOPS software
+curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+
+[ec2-user@ip-172-31-40-143 ~]$ curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  176M  100  176M    0     0  99.7M      0  0:00:01  0:00:01 --:--:--  122M
+
+Now am giving execute permissions for this KOPS software is downloaded
+chmod +x kops-linux-amd64
+
+[ec2-user@ip-172-31-40-143 ~]$ chmod +x kops-linux-amd64
+
+Now am moving the KOPS software which downloaded to this location /usr/local/bin/kops
+sudo mv kops-linux-amd64 /usr/local/bin/kops
+
+[ec2-user@ip-172-31-40-143 ~]$ sudo mv kops-linux-amd64 /usr/local/bin/kops
+
+Completed KOPS installation
+
+
+Now installing kubectl 
+
+4. Install kubectl
+
+This bellow command will download the Kubectl software
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+
+[ec2-user@ip-172-31-40-143 ~]$ curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 47.5M  100 47.5M    0     0  62.4M      0 --:--:-- --:--:-- --:--:-- 62.5M
+
+Now giving execute permissions for Kubectl
+chmod +x ./kubectl
+
+[ec2-user@ip-172-31-40-143 ~]$ chmod +x ./kubectl
+
+Now am moving the Kubectl software which downloaded to this location /usr/local/bin/kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+
+[ec2-user@ip-172-31-40-143 ~]$ sudo mv ./kubectl /usr/local/bin/kubectl
+
+Completed installation of kubectl
+
+Now creating s3 bucket
+
+5. Create S3 bucket in AWS
+S3 bucket is used by kubernetes to persist cluster state, lets create s3 bucket using aws cli Note: Make sure you choose bucket name that is uniqe accross all aws accounts
+
+aws s3 mb s3://kopsbuckett.in.k8s --region us-east-2
+
+[ec2-user@ip-172-31-40-143 ~]$ aws s3 mb s3://kopsbuckett.in.k8s --region us-east-2
+make_bucket: kopsbuckett.in.k8s
+[ec2-user@ip-172-31-40-143 ~]$
+
+Example : ----  aws s3 mb s3://projectname.in.k8s --region us-west-2 (which region you were in that region mention here)
+
+Completed creating of s3 bucket
+
+
+Route53
+
+Now we going to create Route53
+In AWS search for "Route53" and search for "Hosted zones", Click on "Create Hosted zones"
+Give some name for Domain name (kops_bucket.in)
+Next In "type" select it as "Private hosted zone"
+Next select the region which we are working present in AWS account.
+Select the default VPC ID
+Next click on "Created Hosted zone"
+
+
+6. Create private hosted zone in AWS Route53
+Head over to aws Route53 and create hostedzone
+Choose name for example (sai.in)
+Choose type as privated hosted zone for VPC
+Select default vpc in the region you are setting up your cluster
+Hit create
+7 Configure environment variables.
+Open .bashrc file
+
+[ec2-user@ip-172-31-40-143 ~]$ vi .bashrc
+export KOPS_CLUSTER_NAME=kopsbucket.in
+export KOPS_STATE_STORE=s3://kopsbuckett.in.k8s
+
+save and quit
+
+[ec2-user@ip-172-31-40-143 ~]$ source .bashrc           (It will reload the .bashrc file)
+
+	vi .bashrc
+Add following content into .bashrc, you can choose any arbitary name for cluster and make sure buck name matches the one you created in previous step.
+
+export KOPS_CLUSTER_NAME=kopsbucket.in
+export KOPS_STATE_STORE=s3://kopsbuckett.in.k8s
+Then running command to reflect variables added to .bashrc
+
+	source .bashrc
+8. Create ssh key pair
+This keypair is used for ssh into kubernetes cluster
+
+ssh-keygen
+
+[ec2-user@ip-172-31-40-143 ~]$ ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/ec2-user/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/ec2-user/.ssh/id_rsa
+Your public key has been saved in /home/ec2-user/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:ya4Gqi5/x6DDUvPDxctxHJjCHTHIxtGR95JyUbk48aQ ec2-user@ip-172-31-40-143.us-east-2.compute.internal
+The key's randomart image is:
++---[RSA 3072]----+
+|   o.+++ ...     |
+|    = +.+ o      |
+|   o . = X .     |
+|    o =.E.+      |
+|     o +S+       |
+|  o o +.o        |
+| o * * +.        |
+|o = = *.         |
+|+=.o +.          |
++----[SHA256]-----+
+[ec2-user@ip-172-31-40-143 ~]$
+
+kops create cluster --name=k8s-cluster.first.com \
+  --state=s3://kopsbuckett.in.k8s \
+
+9. Create a Kubernetes cluster definition.
+kops create cluster \
+--state=${KOPS_STATE_STORE} \
+--node-count=2 \
+--master-size=t3a.large \
+--node-size=t3a.large \
+--zones=us-east-2b \
+--name=${KOPS_CLUSTER_NAME} \
+--dns private \
+--master-count 1 
+10. Create kubernetes cluster
+kops update cluster --yes --admin
+Above command may take some time to create the required infrastructure resources on AWS. Execute the validate command to check its status and wait until the cluster becomes ready
+
+kops validate cluster
+For the above above command, you might see validation failed error initially when you create cluster and it is expected behaviour, you have to wait for some more time and check again.
+
+11. To connect to the master
+ssh admin@api.javahome.in
+Destroy the kubernetes cluster
+kops delete cluster  --yes
+Update Nodes and Master in the cluster
+We can change numner of nodes and number of masters using following commands
+
+   kops edit ig nodes change minSize and maxSize to 0
+   kops get ig- to get master node name
+   kops edit ig - change min and max size to 0
+   kops update cluster --yes
+   
+   
+  
+=====================================================================================================================  
+  
+Managed kubernetes setup
+===========================
+
+EKS installation process
+
+Eks is activated in multiple ways
+
+eksctl -- This is one line command through which eks cluster can be activated.
+Before installing the eksctl we have to install software called as kubectl, then we have to install eksctl.
+
+
+Create a linux server and give IAM permissions to that linux server.
+This linux server is going to setup the EKS cluster.
+
+Launch one instance
+select the server of ubuntu
+t2.micro
+select the key-pair
+give 1 server and click on "launch instance" 
+
+For this server we have to provide admin privilages.
+In AWS search for IAM(Identity access management) select the IAM
+Go into "Roles" and click on "create roles" select the "AWS service"
+In use case options select "EC2", In EC2 select the EC2 of "allows EC2 instances to call AWS services on your behalf" option
+Click on "Next", In permission policies select "AdministratorAccess" and click on "Next"
+Give some role name(EKS_admin) 
+Click on "Create role"
+
+"Role will be created"
+
+Attach this IAM role to the above running instance
+
+Select the instance and click on "Actions" and select the "Security" in security select "Modify IAM role" 
+Select the name(EKS_admin) of IAM role which i was created.
+Click on "Update IAM role"
+
+
+Installation of EKS 
+=====================
+
+In google search for "eksctl install"
+The 1st document will be from Amazon.com "Installation or updating eksctl" click onit.
+
+Before installation eksctl we have to be install "kubectl"
+
+Connect to that AWS(ubuntu) instance
+commands:--
+
+1. kubectl version --client
+
+2. select the linux part and copy and paste the bellow link
+   curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.31.2/2024-11-15/bin/linux/amd64/kubectl
+
+3. chmod +x ./kubectl
+
+4. mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH
+
+5. kubectl version --client
+
+Now click on installation of "eksctl"
+======================================
+
+Commands:--
+============
+
+1. eksctl version
+
+2. copy bellow total command is the 2nd step
+
+# for ARM systems, set ARCH to: `arm64`, `armv6` or `armv7`
+ARCH=amd64
+PLATFORM=$(uname -s)_$ARCH
+
+curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
+
+# (Optional) Verify checksum
+curl -sL "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_checksums.txt" | grep $PLATFORM | sha256sum --check
+
+tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
+
+sudo mv /tmp/eksctl /usr/local/bin
+
+3. check whether eksctl is installed (or) not
+   eksctl version
+   
+Completed the eksctl installation in linux(ubuntu)server in AWS 
+
+
+=============================================================================
+
+This eksctl software requires one command, In that one command we have to mention how many machines we require as part of the
+cluster, which type of machines.(t3.micro t3a.large etc) and specify the region where we want create all this.
+
+select any region
+Example:-- N. virginia (us-east-1)
+
+command:--
+
+eksctl create cluster \
+    --region us-east-1 \
+  --node-type t2.micro \
+  --node 2 \
+  --name new-cluster 
+  
+This above command is responsible for creating the cluster
+
+Copy the command and run in the instance it will take atleast 15mins, in the background the cluster wil be created.
+
+Deleting commands:--
+
+eksctl delete cluster --name new-cluster --region us-east-1
+
+
+Now search on AWS service called as EKS(Elastic kubernates service)
+
+click on it.
+inside this EKS we can see that cluster is creating.
+
+To check two slaves info is available or not?
+command :-- kubectl get nodes
